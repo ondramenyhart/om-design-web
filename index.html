@@ -114,8 +114,11 @@
         /* --- ABOUT & CONTACT --- */
         .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
         .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
-        .ref-list { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .vision-text { font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
+        .ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+        .full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; }
+        
         .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
         .contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; line-height: 1.3; color: var(--accent); }
         .c-box { border-top: 1px solid var(--dark); padding-top: 40px; }
@@ -139,7 +142,7 @@
             .nav-container { 
                 position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg); 
                 flex-direction: column; padding: 40px; gap: 30px; border-bottom: 1px solid var(--line);
-                display: none; /* Hidden by default on mobile */
+                display: none; 
             }
             .nav-container.mobile-active { display: flex; }
             nav ul { flex-direction: column; align-items: center; gap: 25px; }
@@ -150,6 +153,7 @@
             .hero-flex, .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
             .hero-main-img { height: 400px; }
             .year-tag { font-size: 6rem; }
+            .ref-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -187,7 +191,7 @@
                     <p class="main-desc" data-tr="home-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
                     <h3 class="section-sub-title" data-tr="home-portfolio">Portfolio služeb:</h3>
                     <ul class="service-list" id="services">
-                        </ul>
+                    </ul>
                 </div>
                 <div class="hero-image-area">
                     <img src="image1.jpg" class="hero-main-img" alt="image1">
@@ -205,22 +209,23 @@
                 <div class="year-tag">2008</div>
                 <div>
                     <h2 data-tr="about-h2">Odkaz.</h2>
+                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
+                    
                     <p style="font-size: 1.3rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
                         Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
                     </p>
                     <div class="ref-list">
-                        <div class="ref-tag">SAP ČR, spol. s r.o.</div>
-                        <div class="ref-tag">Bohemia Interactive</div>
-                        <div class="ref-tag">EGE trading s.r.o.</div>
+                        <div class="ref-tag">EGE trading s r.o.</div>
                         <div class="ref-tag">Polymed medical a.s.</div>
-                        <div class="ref-tag">Fa RENE a.s.</div>
-                        <div class="ref-tag">HB Reavis Investments Slovakia s.r.o.</div>         
-                        <div class="ref-tag">MŠMT ČR</div>
-                        <div class="ref-tag">Fakultní nemocnice Hradec Králové</div>
-                        <div class="ref-tag">Magistrát města Hradec Králové</div>
-                        <div class="ref-tag">Český chlapecký sbor Boni Pueri</div>
+                        <div class="ref-tag">Bohemia Interactive</div>
+                        <div class="ref-tag">Dazzle Pictures</div>
+                        <div class="ref-tag">MRAMORIT a.s.</div>
+                        <div class="ref-tag">Skanska a.s.</div>          
+                        <div class="ref-tag">ELTODO, a.s.</div>
+                        <div class="ref-tag">Helma 365, s.r.o.</div>
+                        
+                        <p class="full-width-text" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
                     </div>
-                    <p style="margin-top: 40px; font-style: italic;" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
                 </div>
             </div>
         </section>
@@ -259,7 +264,9 @@
             cz: {
                 "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
                 "home-h2": "Materiál a Prostor.", "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", "home-portfolio": "Portfolio služeb:",
-                "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.", "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
+                "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
+                "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“",
+                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
                 "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",
                 "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
                 "contact-phone": "Telefon", "contact-email": "Emailová adresa",
@@ -268,8 +275,10 @@
             en: {
                 "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
                 "home-h2": "Material and Space.", "home-desc": "Modern look combined with a touch of elegance and luxury.", "home-portfolio": "Our Portfolio:",
-                "gallery-h2": "References.", "about-h2": "Legacy.", "about-p1": "We have been on the market since 2008. Over 18 years, we have completed many successful projects for companies such as:",
-                "about-p2": "...and many other individual projects of family houses, apartments, and commercial spaces across the Czech Republic.", "contact-h2": "Dialogue.",
+                "gallery-h2": "References.", "about-h2": "Legacy.",
+                "about-vision": "\"We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft, and our passion for design has led us from family living rooms to realizations in the offices of international corporations. Whether it's a small family house or a prestigious headquarters of a multinational company, we approach every square meter with the same responsibility as at the very beginning.\"",
+                "about-p1": "We have been on the market since 2008. Over more than 18 years, we have completed many successful projects for companies such as:",
+                "about-p2": "...to various individual projects of family houses, apartments, and commercial spaces across the Czech Republic.", "contact-h2": "Dialogue.",
                 "contact-msg": "\"If you are interested in design, consultation, or project realization, do not hesitate to contact us. Together we will transform your ideas into a quality design solution.\"",
                 "contact-phone": "Phone", "contact-email": "Email address",
                 "services": ["Visual design, consultation, and project realization with an individual approach", "Decorative painting techniques", "Branding walls", "Painting of residential and commercial spaces", "Drywall works", "Flooring works", "Other construction and craft works"]
@@ -282,14 +291,14 @@
             currentLang = lang;
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
-                el.innerText = translations[lang][key];
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
             });
             
-            // Služby
             const list = document.getElementById('services');
             list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
 
-            // Přepínač tříd
             document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         }
@@ -307,7 +316,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Init Galerie
         const images = [];
         const grid = document.getElementById('gallery-grid');
         for (let i = 2; i <= 20; i++) {
@@ -334,7 +342,6 @@
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
-        // Spuštění
         setLang('cz');
     </script>
 </body>
