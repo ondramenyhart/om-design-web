@@ -15,8 +15,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        <meta name="google-site-verification" content="9ZSY8J39w33R9itQT6jvhyvCKRnc0Mxkh3I-f-8WxDI" />
-
+        
         body {
             background-color: var(--bg);
             color: var(--dark);
@@ -115,10 +114,17 @@
         /* --- ABOUT & CONTACT --- */
         .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
         .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
-        .vision-text { font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
+        
+        /* Zvětšení textu VIZE */
+        .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
+        
         .ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
-        .full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; }
+        
+        /* Zvětšení textu firem v seznamu */
+        .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* Zvětšení textu spodního odstavce */
+        .full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; font-size: 1.1rem; }
         
         .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
         .contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; line-height: 1.3; color: var(--accent); }
@@ -212,7 +218,7 @@
                     <h2 data-tr="about-h2">Odkaz.</h2>
                     <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
                     
-                    <p style="font-size: 1.3rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
+                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
                         Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
                     </p>
                     <div class="ref-list">
