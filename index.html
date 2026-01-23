@@ -55,6 +55,7 @@
             width: auto;
             mix-blend-mode: multiply;
             display: block;
+            cursor: pointer; /* Přidáno: kurzor ruky pro logo */
         }
 
         .nav-container { display: flex; align-items: center; gap: 40px; }
@@ -168,12 +169,10 @@
             main { padding-top: 120px; }
             .section { padding: 40px 20px; }
 
-            /* HOME: Obrázek posunut pod seznam služeb */
             .hero-flex { flex-direction: column; gap: 40px; }
             .hero-image-area { width: 100%; }
             .hero-main-img { height: auto; max-height: 500px; width: 100%; }
 
-            /* GALLERY: Celé fotky bez ořezu */
             .gallery-sculpt { grid-template-columns: 1fr; gap: 15px; }
             .g-item { height: auto; max-height: none; }
             .g-item img { height: auto; }
@@ -188,7 +187,7 @@
 
     <header>
         <div class="logo-box">
-            <img src="logo.png" alt="OM Design" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
+            <img src="logo.png" alt="OM Design" onclick="tab('home')" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
         </div>
         
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
