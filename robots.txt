@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /favicon.svg
+Allow: /favicon-48x48.png
+
+User-agent: Googlebot-Image
+Disallow: /image1.jpg
+Disallow: /image2.jpg
+Disallow: /image3.jpg
+Disallow: /image4.jpg
+Disallow: /image5.jpg
+Disallow: /image6.jpg
+Disallow: /image7.jpg
+Disallow: /image8.jpg
+Disallow: /image9.jpg
+Disallow: /image10.jpg
+Disallow: /image11.jpg
+Disallow: /image12.jpg
+Disallow: /image13.jpg
+Disallow: /image14.jpg
+Disallow: /image15.jpg
+Disallow: /image16.jpg
+Disallow: /image17.jpg
+Disallow: /image18.jpg
+Disallow: /image19.jpg
+Disallow: /image20.jpg
+Disallow: /image21.jpg
