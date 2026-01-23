@@ -166,9 +166,19 @@
             .lang-switch { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; width: 100%; justify-content: center; }
             
             main { padding-top: 120px; }
-            .section { padding: 40px 30px; }
-            .hero-flex, .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
-            .hero-main-img { height: 400px; }
+            .section { padding: 40px 20px; }
+
+            /* HOME: Obrázek pod textem a na celou šířku */
+            .hero-flex { flex-direction: column-reverse; gap: 40px; }
+            .hero-image-area { width: 100vw; margin-left: -20px; }
+            .hero-main-img { height: auto; max-height: 500px; width: 100%; }
+
+            /* GALLERY: Celé fotky bez ořezu */
+            .gallery-sculpt { grid-template-columns: 1fr; gap: 15px; }
+            .g-item { height: auto; max-height: none; }
+            .g-item img { height: auto; }
+
+            .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
             .year-tag { font-size: 6rem; }
             .ref-list { grid-template-columns: 1fr; }
         }
