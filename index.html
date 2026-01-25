@@ -6,9 +6,11 @@
     
     <title> OM Design - Dekorativní omítky, branding walls a výmalby </title>
     
+    <link rel="canonical" href="https://www.om-design.cz/">
+    
     <meta name="description" content="„Vaše vize. Naše řemeslo. Společný projekt.“ Pro inspiraci si prohlédněte naši galerii">
     
-    <meta name="robots" content="noimageindex">
+    <meta name="robots" content="index, follow">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
@@ -103,7 +105,7 @@
             to { opacity: 1; filter: blur(0); transform: scale(1); }
         }
 
-        h2 {
+        h1, h2 {
             font-family: 'Fraunces', serif;
             font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 300; line-height: 0.9; margin-bottom: 60px; letter-spacing: -3px;
@@ -213,7 +215,7 @@
 
     <main>
         <section id="home" class="section active">
-            <h2 data-tr="home-h2">Materiál a Prostor.</h2>
+            <h1 data-tr="home-h2">Materiál a Prostor.</h1>
             <div class="hero-flex">
                 <div class="hero-info">
                     <p class="main-desc" data-tr="home-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
@@ -222,7 +224,7 @@
                     </ul>
                 </div>
                 <div class="hero-image-area">
-                    <img src="image1.jpg" class="hero-main-img" alt="image1">
+                    <img src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -248,7 +250,7 @@
                         <div class="ref-tag">Bohemia Interactive</div>
                         <div class="ref-tag">Dazzle Pictures</div>
                         <div class="ref-tag">MRAMORIT a.s.</div>
-                        <div class="ref-tag">Skanska a.s.</div>          
+                        <div class="ref-tag">Skanska a.s.</div>           
                         <div class="ref-tag">ELTODO, a.s.</div>
                         <div class="ref-tag">Helma 365, s.r.o.</div>
                         
@@ -350,7 +352,8 @@
             images.push(`image${i}.jpg`);
             const item = document.createElement('div');
             item.className = 'g-item';
-            item.innerHTML = `<img src="image${i}.jpg" alt="Work ${i}" onclick="openLightbox(${i-2})">`;
+            // OPRAVA: Lepší alt text pro indexaci obrázků
+            item.innerHTML = `<img src="image${i}.jpg" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})">`;
             grid.appendChild(item);
         }
 
