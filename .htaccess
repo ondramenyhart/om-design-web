@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# 1. Přesměrování z HTTP na HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Přesměrování z domény bez WWW na WWW verzi
+RewriteCond %{HTTP_HOST} ^om-design\.cz [NC]
+RewriteRule ^(.*)$ https://www.om-design.cz/$1 [L,R=301]
