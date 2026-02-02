@@ -316,6 +316,7 @@
 
         const routeMap = {
             '': 'home',
+            '/': 'home',
             'galerie': 'gallery',
             'o-nas': 'about',
             'kontakt': 'contact'
@@ -345,16 +346,12 @@
 
         // --- HLAVNÍ FUNKCE PRO PŘEPÍNÁNÍ ---
         function tab(id, event) {
-            // Zabránit znovunačtení stránky při kliknutí na odkaz
             if (event) event.preventDefault();
             
-            // Mapování ID na URL cestu
-            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id);
-            const newPath = (urlPath === '') ? '/' : '/' + urlPath;
+            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id && key !== '');
+            const newPath = urlPath ? '/' + urlPath : '/';
             
-            // Změna URL v historii prohlížeče
             window.history.pushState({sectionId: id}, '', newPath);
-            
             showSection(id);
         }
 
@@ -372,7 +369,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Obsluha tlačítka "Zpět" v prohlížeči
         window.addEventListener('popstate', (event) => {
             if (event.state && event.state.sectionId) {
                 showSection(event.state.sectionId);
@@ -381,9 +377,8 @@
             }
         });
 
-        // Logika pro načtení správné sekce při prvním vstupu na web (podle URL)
         function handleInitialRouting() {
-            const path = window.location.pathname.replace('/', '');
+            const path = window.location.pathname.replace(/^\//, '');
             const sectionId = routeMap[path] || 'home';
             showSection(sectionId);
         }
@@ -415,7 +410,6 @@
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
-        // Spuštění při načtení
         window.addEventListener('load', handleInitialRouting);
         setLang('cz');
     </script>
