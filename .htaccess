@@ -1,14 +1,12 @@
 RewriteEngine On
+RewriteBase /
 
-# 1. Vynucení HTTPS a WWW (zůstává, je to tak správně)
+# 1. Vynucení HTTPS a WWW
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.om-design.cz/$1 [L,R=301]
 
-# 2. Interní přesměrování pro SPA (Single Page Application)
-# Pokud požadovaná cesta NENÍ fyzický soubor (obrázek, pdf, css...)
+# 2. Interní přesměrování pro SPA
 RewriteCond %{REQUEST_FILENAME} !-f
-# A pokud to NENÍ fyzická složka
 RewriteCond %{REQUEST_FILENAME} !-d
-# Pak všechno pošli do index.html, který si to přebere pomocí JavaScriptu
 RewriteRule ^(.*)$ index.html [L]
