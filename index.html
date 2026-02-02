@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <base href="/">
+
     <title> OM Design - Dekorativní omítky, branding walls a výmalby </title>
     
     <link rel="canonical" href="https://www.om-design.cz/">
@@ -316,7 +318,6 @@
 
         const routeMap = {
             '': 'home',
-            '/': 'home',
             'galerie': 'gallery',
             'o-nas': 'about',
             'kontakt': 'contact'
@@ -348,8 +349,8 @@
         function tab(id, event) {
             if (event) event.preventDefault();
             
-            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id && key !== '');
-            const newPath = urlPath ? '/' + urlPath : '/';
+            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id);
+            const newPath = urlPath === '' ? '/' : '/' + urlPath;
             
             window.history.pushState({sectionId: id}, '', newPath);
             showSection(id);
@@ -378,7 +379,7 @@
         });
 
         function handleInitialRouting() {
-            const path = window.location.pathname.replace(/^\//, '');
+            const path = window.location.pathname.replace(/^\/|\/$/g, '');
             const sectionId = routeMap[path] || 'home';
             showSection(sectionId);
         }
@@ -410,7 +411,8 @@
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
-        window.addEventListener('load', handleInitialRouting);
+        // Spustíme směrování hned po načtení
+        handleInitialRouting();
         setLang('cz');
     </script>
 </body>
