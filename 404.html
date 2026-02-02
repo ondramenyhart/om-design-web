@@ -1,436 +1,419 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="cs">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>OM Design | Povrchy s duší</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    body {background-color: #f4f1eb}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #0d0d0d; -webkit-text-stroke: #0d0d0d}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #0d0d0d; -webkit-text-stroke: #0d0d0d; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 12.0px 'Apple Symbols'; font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <base href="/">
+
+    <title> OM Design - Dekorativní omítky, branding walls a výmalby </title>
+    
+    <link rel="canonical" href="https://www.om-design.cz/">
+    
+    <meta name="description" content="„Vaše vize. Naše řemeslo. Společný projekt.“ Pro inspiraci si prohlédněte naši galerii">
+    
+    <meta name="robots" content="index, follow">
+
+    <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #f8f6f2;
+            --dark: #121212;
+            --accent: #9a7d61;
+            --line: rgba(18, 18, 18, 0.08);
+            --transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--dark);
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; 
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo-box img {
+            height: 75px;
+            width: auto;
+            mix-blend-mode: multiply;
+            display: block;
+            cursor: pointer;
+        }
+
+        .nav-container { display: flex; align-items: center; gap: 40px; }
+
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav a:hover, nav a.active { color: var(--accent); }
+        nav a.active::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 1px; background: var(--accent);
+        }
+
+        /* Lang Switcher */
+        .lang-switch { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-left: 1px solid var(--line); padding-left: 20px; }
+        .lang-switch span { opacity: 0.3; transition: 0.3s; }
+        .lang-switch span.active { opacity: 1; color: var(--accent); }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- CONTENT --- */
+        main { padding-top: 140px; }
+
+        .section {
+            display: none;
+            padding: 60px 60px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: sectionIn 1s forwards;
+        }
+        .section.active { display: block; }
+
+        @keyframes sectionIn {
+            from { opacity: 0; filter: blur(10px); transform: scale(0.98); }
+            to { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        h1, h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 300; line-height: 0.9; margin-bottom: 60px; letter-spacing: -3px;
+        }
+
+        /* --- HOME --- */
+        .hero-flex { display: flex; gap: 80px; align-items: flex-start; }
+        .hero-info { flex: 1.2; }
+        .hero-image-area { flex: 0.8; }
+        .main-desc { font-size: 1.6rem; font-weight: 200; margin-bottom: 50px; line-height: 1.4; color: var(--accent); font-family: 'Fraunces', serif; font-style: italic; }
+        .section-sub-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 600; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 15px; }
+        .service-list { list-style: none; margin-top: 10px; }
+        .service-list li { padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 1.1rem; font-weight: 200; display: flex; align-items: center; }
+        .service-list li::before { content: "—"; margin-right: 20px; color: var(--accent); }
+        .hero-main-img { width: 100%; height: 600px; object-fit: cover; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
+
+        /* --- GALLERY --- */
+        .gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }
+        .g-item:hover img { transform: scale(1.05); }
+
+        /* --- ABOUT & CONTACT --- */
+        .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
+        .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
+        
+        .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
+        
+        .ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        
+        .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; font-size: 1.1rem; }
+        
+        .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+        .contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; line-height: 1.3; color: var(--accent); }
+        .c-box { border-top: 1px solid var(--dark); padding-top: 40px; }
+        .c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; display: block; opacity: 0.5; }
+        .c-val { font-size: 2.2rem; font-weight: 200; text-decoration: none; color: inherit; display: block; margin-bottom: 40px; }
+
+        /* --- LIGHTBOX --- */
+        #lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.98); justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        #lightbox-img { max-width: 90%; max-height: 85vh; box-shadow: 0 30px 60px rgba(0,0,0,0.15); border: 10px solid white; }
+        .lb-btn { position: absolute; color: var(--dark); font-size: 2rem; cursor: pointer; padding: 20px; }
+        .lb-close { top: 30px; right: 30px; }
+        .lb-prev { left: 30px; }
+        .lb-next { right: 30px; }
+
+        footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }
+
+        /* --- MOBILE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
+            header { padding: 20px 30px; }
+            .menu-toggle { display: block; }
+            .nav-container { 
+                position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg); 
+                flex-direction: column; padding: 40px; gap: 30px; border-bottom: 1px solid var(--line);
+                display: none; 
+            }
+            .nav-container.mobile-active { display: flex; }
+            nav ul { flex-direction: column; align-items: center; gap: 25px; }
+            .lang-switch { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; width: 100%; justify-content: center; }
+            
+            main { padding-top: 120px; }
+            .section { padding: 40px 20px; }
+
+            .hero-flex { flex-direction: column; gap: 40px; }
+            .hero-image-area { width: 100%; }
+            .hero-main-img { height: auto; max-height: 500px; width: 100%; }
+
+            .gallery-sculpt { grid-template-columns: 1fr; gap: 15px; }
+            .g-item { height: auto; max-height: none; }
+            .g-item img { height: auto; }
+
+            .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
+            .year-tag { font-size: 6rem; }
+            .ref-list { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="cs"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt; OM Design - Dekorativní omítky, branding walls a výmalby &lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="canonical" href="https://www.om-design.cz/"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="„Vaše vize. Naše řemeslo. Společný projekt.“ Pro inspiraci si prohlédněte naši galerii"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="robots" content="index, follow"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="apple-touch-icon" href="/favicon.svg"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&amp;family=Hanken+Grotesk:wght@200;400;600&amp;display=swap" rel="stylesheet"&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--bg: #f8f6f2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--dark: #121212;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--accent: #9a7d61;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--line: rgba(18, 18, 18, 0.08);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>* { margin: 0; padding: 0; box-sizing: border-box; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--bg);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--dark);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Hanken Grotesk', sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- NAVIGATION --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>header {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: fixed;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: 0; left: 0;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px 60px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 1000;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--bg);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--line);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-box img {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 75px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>mix-blend-mode: multiply;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: block;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-container { display: flex; align-items: center; gap: 40px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav ul { display: flex; list-style: none; gap: 30px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav a {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--dark);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 0.75rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: 600;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-transform: uppercase;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>letter-spacing: 3px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: 0.3s;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav a:hover, nav a.active { color: var(--accent); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav a.active::after {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 1px; background: var(--accent);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Lang Switcher */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lang-switch { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-left: 1px solid var(--line); padding-left: 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lang-switch span { opacity: 0.3; transition: 0.3s; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lang-switch span.active { opacity: 1; color: var(--accent); }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Mobile Menu Toggle */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- CONTENT --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>main { padding-top: 140px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 60px 60px 120px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 1400px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: sectionIn 1s forwards;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section.active { display: block; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes sectionIn {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>from { opacity: 0; filter: blur(10px); transform: scale(0.98); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>to { opacity: 1; filter: blur(0); transform: scale(1); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1, h2 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Fraunces', serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: clamp(3rem, 10vw, 7rem);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: 300; line-height: 0.9; margin-bottom: 60px; letter-spacing: -3px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- HOME --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-flex { display: flex; gap: 80px; align-items: flex-start; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-info { flex: 1.2; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-image-area { flex: 0.8; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.main-desc { font-size: 1.6rem; font-weight: 200; margin-bottom: 50px; line-height: 1.4; color: var(--accent); font-family: 'Fraunces', serif; font-style: italic; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-sub-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 600; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 15px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.service-list { list-style: none; margin-top: 10px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.service-list li { padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 1.1rem; font-weight: 200; display: flex; align-items: center; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.service-list li::before { content: "—"; margin-right: 20px; color: var(--accent); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-main-img { width: 100%; height: 600px; object-fit: cover; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- GALLERY --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.g-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.g-item:hover img { transform: scale(1.05); }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- ABOUT &amp; CONTACT --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; font-size: 1.1rem; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; line-height: 1.3; color: var(--accent); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.c-box { border-top: 1px solid var(--dark); padding-top: 40px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; display: block; opacity: 0.5; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.c-val { font-size: 2.2rem; font-weight: 200; text-decoration: none; color: inherit; display: block; margin-bottom: 40px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- LIGHTBOX --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.98); justify-content: center; align-items: center; backdrop-filter: blur(10px); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#lightbox-img { max-width: 90%; max-height: 85vh; box-shadow: 0 30px 60px rgba(0,0,0,0.15); border: 10px solid white; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lb-btn { position: absolute; color: var(--dark); font-size: 2rem; cursor: pointer; padding: 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lb-close { top: 30px; right: 30px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lb-prev { left: 30px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lb-next { right: 30px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* --- MOBILE ADJUSTMENTS --- */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (max-width: 1024px) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>header { padding: 20px 30px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.menu-toggle { display: block; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.nav-container {<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg);<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>flex-direction: column; padding: 40px; gap: 30px; border-bottom: 1px solid var(--line);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>display: none;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.nav-container.mobile-active { display: flex; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>nav ul { flex-direction: column; align-items: center; gap: 25px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.lang-switch { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; width: 100%; justify-content: center; }</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>main { padding-top: 120px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.section { padding: 40px 20px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero-flex { flex-direction: column; gap: 40px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero-image-area { width: 100%; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero-main-img { height: auto; max-height: 500px; width: 100%; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.gallery-sculpt { grid-template-columns: 1fr; gap: 15px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.g-item { height: auto; max-height: none; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.g-item img { height: auto; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.year-tag { font-size: 6rem; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.ref-list { grid-template-columns: 1fr; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="logo-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="/logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="menu-toggle" onclick="toggleMenu()"&gt;</span><span class="s2">☰</span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="nav-container" id="navContainer"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/" onclick="tab('home', event)" id="t-home" class="active" data-tr="nav-home"&gt;Domů&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/galerie" onclick="tab('gallery', event)" id="t-gallery" data-tr="nav-gallery"&gt;Galerie&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/o-nas" onclick="tab('about', event)" id="t-about" data-tr="nav-about"&gt;O nás&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="/kontakt" onclick="tab('contact', event)" id="t-contact" data-tr="nav-contact"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="lang-switch"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span id="lang-cz" class="active" onclick="setLang('cz')"&gt;CZ&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span&gt;|&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span id="lang-en" onclick="setLang('en')"&gt;EN&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;main&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="home" class="section active"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 data-tr="home-h2"&gt;Materiál a Prostor.&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hero-flex"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="hero-info"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="main-desc" data-tr="home-desc"&gt;Moderní vzhled propojený s nádechem elegance a luxusu.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="section-sub-title" data-tr="home-portfolio"&gt;Portfolio služeb:&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;ul class="service-list" id="services"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="hero-image-area"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="/image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="gallery" class="section"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 data-tr="gallery-h2"&gt;Ukázky naší práce.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="gallery-sculpt" id="gallery-grid"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="about" class="section"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="about-row"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="year-tag"&gt;2008&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 data-tr="about-h2"&gt;Odkaz.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="vision-text" data-tr="about-vision"&gt;„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="ref-list"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;EGE trading s.r.o.&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;Polymed medical a.s.&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;Bohemia Interactive&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;Dazzle Pictures&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;MRAMORIT a.s.&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;Skanska a.s.&lt;/div&gt; <span class="Apple-converted-space">           </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;ELTODO, a.s.&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="ref-tag"&gt;Helma 365, s.r.o.&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="full-width-text" data-tr="about-p2"&gt;...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="contact" class="section"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 data-tr="contact-h2"&gt;Dialog.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="contact-view"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="contact-msg" data-tr="contact-msg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení."</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="c-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="c-label"&gt;Project Manager&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="c-val"&gt;Mgr. Ondřej Menyhárt&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="c-label" data-tr="contact-phone"&gt;Telefon&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="tel:+420776648619" class="c-val"&gt;+ 420 776 648 619&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="c-label" data-tr="contact-email"&gt;Emailová adresa&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.5rem;"&gt;ondra.menyhart@gmail.com&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="lightbox"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span class="lb-btn lb-close" onclick="closeLightbox()"&gt;&amp;times;&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span class="lb-btn lb-prev" onclick="changeImage(-1)"&gt;&amp;#10094;&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span class="lb-btn lb-next" onclick="changeImage(1)"&gt;&amp;#10095;&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;img id="lightbox-img" src="" alt=""&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer id="footer-text"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&amp;copy; 2008 — 2026 OM DESIGN &amp;bull; CZECH REPUBLIC</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const translations = {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cz: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"home-h2": "Materiál a Prostor.", "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", "home-portfolio": "Portfolio služeb:",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"contact-phone": "Telefon", "contact-email": "Emailová adresa",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>en: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"home-h2": "Material and Space.", "home-desc": "Modern look combined with a touch of elegance and luxury.", "home-portfolio": "Our Portfolio:",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"gallery-h2": "References.", "about-h2": "Legacy.",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-vision": "\"We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft, and our passion for design has led us from family living rooms to realizations in the offices of international corporations. Whether it's a small family house or a prestigious headquarters of a multinational company, we approach every square meter with the same responsibility as at the very beginning.\"",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-p1": "We have been on the market since 2008. Over more than 18 years, we have completed many successful projects for companies such as:",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"about-p2": "...to various individual projects of family houses, apartments, and commercial spaces across the Czech Republic.", "contact-h2": "Dialogue.",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"contact-msg": "\"If you are interested in design, consultation, or project realization, do not hesitate to contact us. Together we will transform your ideas into a quality design solution.\"",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"contact-phone": "Phone", "contact-email": "Email address",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"services": ["Visual design, consultation, and project realization with an individual approach", "Decorative painting techniques", "Branding walls", "Painting of residential and commercial spaces", "Drywall works", "Flooring works", "Other construction and craft works"]</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const routeMap = {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'': 'home',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'/': 'home',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'galerie': 'gallery',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'o-nas': 'about',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'kontakt': 'contact'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let currentLang = 'cz';</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function setLang(lang) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentLang = lang;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.querySelectorAll('[data-tr]').forEach(el =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const key = el.getAttribute('data-tr');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (translations[lang][key]) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>el.innerText = translations[lang][key];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const list = document.getElementById('services');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>list.innerHTML = translations[lang].services.map(s =&gt; `&lt;li&gt;${s}&lt;/li&gt;`).join('');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lang-en').classList.toggle('active', lang === 'en');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function toggleMenu() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('navContainer').classList.toggle('mobile-active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- HLAVNÍ FUNKCE PRO PŘEPÍNÁNÍ ---</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function tab(id, event) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (event) event.preventDefault();</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const urlPath = Object.keys(routeMap).find(key =&gt; routeMap[key] === id &amp;&amp; key !== '');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const newPath = urlPath ? '/' + urlPath : '/';</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>window.history.pushState({sectionId: id}, '', newPath);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>showSection(id);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function showSection(id) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.section').forEach(s =&gt; s.classList.remove('active'));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.querySelectorAll('nav a').forEach(a =&gt; a.classList.remove('active'));</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const targetSection = document.getElementById(id);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const targetNav = document.getElementById('t-' + id);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (targetSection) targetSection.classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (targetNav) targetNav.classList.add('active');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('navContainer').classList.remove('mobile-active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>window.scrollTo({top: 0, behavior: 'smooth'});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.addEventListener('popstate', (event) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (event.state &amp;&amp; event.state.sectionId) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showSection(event.state.sectionId);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>handleInitialRouting();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function handleInitialRouting() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const path = window.location.pathname.replace(/^\//, '');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const sectionId = routeMap[path] || 'home';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>showSection(sectionId);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- GALERIE ---</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const images = [];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const grid = document.getElementById('gallery-grid');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = 2; i &lt;= 20; i++) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>images.push(`/image${i}.jpg`);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const item = document.createElement('div');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>item.className = 'g-item';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>item.innerHTML = `&lt;img src="/image${i}.jpg" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})"&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid.appendChild(item);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let currentIdx = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function openLightbox(idx) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentIdx = idx;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lightbox-img').src = images[currentIdx];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lightbox').style.display = 'flex';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.body.style.overflow = 'hidden';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function closeLightbox() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lightbox').style.display = 'none';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.body.style.overflow = 'auto';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function changeImage(dir) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentIdx = (currentIdx + dir + images.length) % images.length;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('lightbox-img').src = images[currentIdx];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.addEventListener('load', handleInitialRouting);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>setLang('cz');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+    <header>
+        <div class="logo-box">
+            <img src="/logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <div class="nav-container" id="navContainer">
+            <nav>
+                <ul>
+                    <li><a href="/" onclick="tab('home', event)" id="t-home" class="active" data-tr="nav-home">Domů</a></li>
+                    <li><a href="/galerie" onclick="tab('gallery', event)" id="t-gallery" data-tr="nav-gallery">Galerie</a></li>
+                    <li><a href="/o-nas" onclick="tab('about', event)" id="t-about" data-tr="nav-about">O nás</a></li>
+                    <li><a href="/kontakt" onclick="tab('contact', event)" id="t-contact" data-tr="nav-contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <span id="lang-cz" class="active" onclick="setLang('cz')">CZ</span>
+                <span>|</span>
+                <span id="lang-en" onclick="setLang('en')">EN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="section active">
+            <h1 data-tr="home-h2">Materiál a Prostor.</h1>
+            <div class="hero-flex">
+                <div class="hero-info">
+                    <p class="main-desc" data-tr="home-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
+                    <h3 class="section-sub-title" data-tr="home-portfolio">Portfolio služeb:</h3>
+                    <ul class="service-list" id="services">
+                    </ul>
+                </div>
+                <div class="hero-image-area">
+                    <img src="/image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section">
+            <h2 data-tr="gallery-h2">Ukázky naší práce.</h2>
+            <div class="gallery-sculpt" id="gallery-grid"></div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-row">
+                <div class="year-tag">2008</div>
+                <div>
+                    <h2 data-tr="about-h2">Odkaz.</h2>
+                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
+                    
+                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
+                        Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
+                    </p>
+                    <div class="ref-list">
+                        <div class="ref-tag">EGE trading s.r.o.</div>
+                        <div class="ref-tag">Polymed medical a.s.</div>
+                        <div class="ref-tag">Bohemia Interactive</div>
+                        <div class="ref-tag">Dazzle Pictures</div>
+                        <div class="ref-tag">MRAMORIT a.s.</div>
+                        <div class="ref-tag">Skanska a.s.</div>            
+                        <div class="ref-tag">ELTODO, a.s.</div>
+                        <div class="ref-tag">Helma 365, s.r.o.</div>
+                        
+                        <p class="full-width-text" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 data-tr="contact-h2">Dialog.</h2>
+            <div class="contact-view">
+                <div class="contact-msg" data-tr="contact-msg">
+                    "V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení."
+                </div>
+                <div class="c-box">
+                    <span class="c-label">Project Manager</span>
+                    <span class="c-val">Mgr. Ondřej Menyhárt</span>
+                    <span class="c-label" data-tr="contact-phone">Telefon</span>
+                    <a href="tel:+420776648619" class="c-val">+ 420 776 648 619</a>
+                    <span class="c-label" data-tr="contact-email">Emailová adresa</span>
+                    <a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.5rem;">ondra.menyhart@gmail.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox">
+        <span class="lb-btn lb-close" onclick="closeLightbox()">&times;</span>
+        <span class="lb-btn lb-prev" onclick="changeImage(-1)">&#10094;</span>
+        <span class="lb-btn lb-next" onclick="changeImage(1)">&#10095;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <footer id="footer-text">
+        &copy; 2008 — 2026 OM DESIGN &bull; CZECH REPUBLIC
+    </footer>
+
+    <script>
+        const translations = {
+            cz: {
+                "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
+                "home-h2": "Materiál a Prostor.", "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", "home-portfolio": "Portfolio služeb:",
+                "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
+                "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“",
+                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
+                "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",
+                "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
+                "contact-phone": "Telefon", "contact-email": "Emailová adresa",
+                "services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]
+            },
+            en: {
+                "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
+                "home-h2": "Material and Space.", "home-desc": "Modern look combined with a touch of elegance and luxury.", "home-portfolio": "Our Portfolio:",
+                "gallery-h2": "References.", "about-h2": "Legacy.",
+                "about-vision": "\"We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft, and our passion for design has led us from family living rooms to realizations in the offices of international corporations. Whether it's a small family house or a prestigious headquarters of a multinational company, we approach every square meter with the same responsibility as at the very beginning.\"",
+                "about-p1": "We have been on the market since 2008. Over more than 18 years, we have completed many successful projects for companies such as:",
+                "about-p2": "...to various individual projects of family houses, apartments, and commercial spaces across the Czech Republic.", "contact-h2": "Dialogue.",
+                "contact-msg": "\"If you are interested in design, consultation, or project realization, do not hesitate to contact us. Together we will transform your ideas into a quality design solution.\"",
+                "contact-phone": "Phone", "contact-email": "Email address",
+                "services": ["Visual design, consultation, and project realization with an individual approach", "Decorative painting techniques", "Branding walls", "Painting of residential and commercial spaces", "Drywall works", "Flooring works", "Other construction and craft works"]
+            }
+        };
+
+        const routeMap = {
+            '': 'home',
+            'galerie': 'gallery',
+            'o-nas': 'about',
+            'kontakt': 'contact'
+        };
+
+        let currentLang = 'cz';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-tr]').forEach(el => {
+                const key = el.getAttribute('data-tr');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            
+            const list = document.getElementById('services');
+            list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
+
+            document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        }
+
+        function toggleMenu() {
+            document.getElementById('navContainer').classList.toggle('mobile-active');
+        }
+
+        // --- HLAVNÍ FUNKCE PRO PŘEPÍNÁNÍ ---
+        function tab(id, event) {
+            if (event) event.preventDefault();
+            
+            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id);
+            const newPath = urlPath === '' ? '/' : '/' + urlPath;
+            
+            window.history.pushState({sectionId: id}, '', newPath);
+            showSection(id);
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            
+            const targetSection = document.getElementById(id);
+            const targetNav = document.getElementById('t-' + id);
+            
+            if (targetSection) targetSection.classList.add('active');
+            if (targetNav) targetNav.classList.add('active');
+            
+            document.getElementById('navContainer').classList.remove('mobile-active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.sectionId) {
+                showSection(event.state.sectionId);
+            } else {
+                handleInitialRouting();
+            }
+        });
+
+        function handleInitialRouting() {
+            const path = window.location.pathname.replace(/^\/|\/$/g, '');
+            const sectionId = routeMap[path] || 'home';
+            showSection(sectionId);
+        }
+
+        // --- GALERIE ---
+        const images = [];
+        const grid = document.getElementById('gallery-grid');
+        for (let i = 2; i <= 20; i++) {
+            images.push(`/image${i}.jpg`);
+            const item = document.createElement('div');
+            item.className = 'g-item';
+            item.innerHTML = `<img src="/image${i}.jpg" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})">`;
+            grid.appendChild(item);
+        }
+
+        let currentIdx = 0;
+        function openLightbox(idx) {
+            currentIdx = idx;
+            document.getElementById('lightbox-img').src = images[currentIdx];
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        function changeImage(dir) {
+            currentIdx = (currentIdx + dir + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIdx];
+        }
+
+        // Spustíme směrování hned po načtení
+        handleInitialRouting();
+        setLang('cz');
+    </script>
 </body>
 </html>
