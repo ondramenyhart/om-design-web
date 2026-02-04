@@ -14,12 +14,15 @@
     
     <meta name="robots" content="index, follow">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.om-design.cz/">
+    <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
+    <meta property="og:description" content="Vaše vize. Naše řemeslo. Společný projekt. Realizujeme luxusní povrchy, betonové stěrky a branding walls.">
+    <meta property="og:image" content="https://www.om-design.cz/image1.jpg">
+
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
     
@@ -192,7 +195,7 @@
 
     <header>
         <div class="logo-box">
-            <img src="/logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
+            <img src="logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
         </div>
         
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -225,7 +228,7 @@
                     </ul>
                 </div>
                 <div class="hero-image-area">
-                    <img src="/image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
+                    <img src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -384,14 +387,15 @@
             showSection(sectionId);
         }
 
-        // --- GALERIE ---
+        // --- GALERIE (OPRAVENÉ CESTY) ---
         const images = [];
         const grid = document.getElementById('gallery-grid');
-        for (let i = 2; i <= 20; i++) {
-            images.push(`/image${i}.jpg`);
+        for (let i = 2; i <= 21; i++) {
+            const imgSrc = `image${i}.jpg`; // Cesta bez počátečního lomítka
+            images.push(imgSrc);
             const item = document.createElement('div');
             item.className = 'g-item';
-            item.innerHTML = `<img src="/image${i}.jpg" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})">`;
+            item.innerHTML = `<img src="${imgSrc}" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})">`;
             grid.appendChild(item);
         }
 
