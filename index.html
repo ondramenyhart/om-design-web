@@ -45,7 +45,7 @@
     <meta property="og:url" content="https://www.om-design.cz/">
     <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
     <meta property="og:description" content="Vaše vize. Naše řemeslo. Společný projekt. Realizujeme luxusní povrchy, betonové stěrky a branding walls.">
-    <meta property="og:image" content="https://www.om-design.cz/image1.jpg?v=1.1">
+    <meta property="og:image" content="https://www.om-design.cz/image1.jpg?v=2.2">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
@@ -58,7 +58,7 @@
             --dark: #121212;
             --accent: #9a7d61;
             --line: rgba(18, 18, 18, 0.08);
-            --transition: all 0.3s ease-out; /* Zrychleno */
+            --transition: all 0.3s ease-out;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -126,7 +126,7 @@
             padding: 60px 60px 120px;
             max-width: 1400px;
             margin: 0 auto;
-            animation: sectionIn 0.3s ease-out forwards; /* ZRYCHLENO A BEZ BLURU */
+            animation: sectionIn 0.3s ease-out forwards;
         }
         .section.active { display: block; }
 
@@ -154,7 +154,7 @@
 
         /* --- GALLERY --- */
         .gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); }
+        .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); background: #eee; }
         .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
         .g-item:hover img { transform: scale(1.05); }
 
@@ -208,7 +208,7 @@
 
     <header>
         <div class="logo-box">
-            <img src="logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
+            <img id="main-logo" src="logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
         </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-container" id="navContainer">
@@ -238,7 +238,7 @@
                     <ul class="service-list" id="services"></ul>
                 </div>
                 <div class="hero-image-area">
-                    <img src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
+                    <img id="hero-img" src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -302,6 +302,13 @@
     </footer>
 
     <script>
+        // --- KONFIGURACE VERZE (Cache Buster) ---
+        const webVersion = "2.2";
+
+        // Nastavení verze pro statické obrázky hned po načtení
+        document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
+        document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
+
         const translations = {
             cz: {
                 "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
@@ -391,13 +398,28 @@
 
         const images = [];
         const grid = document.getElementById('gallery-grid');
+        
+        // --- GENEROVÁNÍ GALERIE S POJISTKOU PRO MOBILY ---
         for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg`; // Odstraněn parametr cache-bustingu pro rychlost
+            const imgSrc = `image${i}.jpg?v=${webVersion}`; 
             images.push(imgSrc);
+            
             const item = document.createElement('div');
             item.className = 'g-item';
-            const altText = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
-            item.innerHTML = `<img src="${imgSrc}" alt="${altText}" loading="lazy" onclick="openLightbox(${i-2})">`;
+            
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
+            img.loading = "lazy";
+            img.onclick = function() { openLightbox(i-2); };
+            
+            // Kontrola chyby načtení
+            img.onerror = function() {
+                this.style.display = 'none';
+                this.parentElement.style.background = '#f0f0f0';
+            };
+
+            item.appendChild(img);
             grid.appendChild(item);
         }
 
