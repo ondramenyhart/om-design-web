@@ -387,6 +387,22 @@
             showSection(sectionId);
         }
 
+        // --- DYNAMICKÁ GALERIE S INDIVIDUÁLNÍMI ALT TEXTY ---
+        const seoDescriptions = {
+            2: "Betonová stěrka pro EGE Trading s.r.o. Praha",
+            3: "Vertikální malířská JUB Desert technika Praha",
+            4: "Branding wall EGE Trading s.r.o. Praha",
+            5: "Betonová stěrka Polymed Hradec Králové",
+            6: "Branding wall Polymed Hradec Králové",
+            7: "Branding wall Polymed Hradec Králové",
+            8: "Betonová stěrka Polymed Hradec Králové",
+            9: "Imitace betonu v italském Provence stylu v rodinném domě Hradec Králové",
+            10: "Vertikální malířská technika JUB Desert v rodinném domě v okolí Hradce Králové",
+            11: "Branding wall Polymed Hradec Králové",
+            12: "Vertikální malířská technika JUB Desert bytu v Hradci Králové",
+            13: "Imitace betonu v rodinném domě v Hradci Králové"
+        };
+
         const images = [];
         const grid = document.getElementById('gallery-grid');
         for (let i = 2; i <= 20; i++) {
@@ -394,7 +410,11 @@
             images.push(imgSrc);
             const item = document.createElement('div');
             item.className = 'g-item';
-            item.innerHTML = `<img src="${imgSrc}" alt="Realizace dekorativní omítky OM Design ${i}" onclick="openLightbox(${i-2})">`;
+            
+            // Přiřazení specifického textu nebo obecného popisku
+            const altText = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
+            
+            item.innerHTML = `<img src="${imgSrc}" alt="${altText}" onclick="openLightbox(${i-2})">`;
             grid.appendChild(item);
         }
 
