@@ -387,11 +387,12 @@
             showSection(sectionId);
         }
 
-        // --- GALERIE (LIMIT NASTAVEN NA 20) ---
+        // --- GALERIE (S VYNUCENOU AKTUALIZACÍ CACHE) ---
         const images = [];
         const grid = document.getElementById('gallery-grid');
-        for (let i = 2; i <= 20; i++) { // Změněno z 21 na 20
-            const imgSrc = `image${i}.jpg`; 
+        for (let i = 2; i <= 20; i++) {
+            // Přidání časového razítka zajistí, že mobilní telefony načtou vždy nejnovější verzi obrázku
+            const imgSrc = `image${i}.jpg?v=${new Date().getTime()}`; 
             images.push(imgSrc);
             const item = document.createElement('div');
             item.className = 'g-item';
