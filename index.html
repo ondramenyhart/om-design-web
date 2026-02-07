@@ -6,7 +6,7 @@
     
     <base href="/">
 
-    <title> OM Design - Dekorativní omítky, branding walls, výmalby a řemeslné práce </title>
+    <title> OM Design - Dekorativní omítky, branding walls, výmalby a ostatní řemeslné práce </title>
     
     <link rel="canonical" href="https://www.om-design.cz/">
     
@@ -36,7 +36,7 @@
         { "@type": "City", "name": "Praha" },
         { "@type": "AdministrativeArea", "name": "Východní Čechy" }
       ],
-      "description": "Specialista na luxusní dekorativní omítky, betonové stěrky, branding walls a řemeslné práce v regionech Hradec Králové, Pardubice a Praha.",
+      "description": "Specialista na dekorativní omítky, betonové stěrky, branding walls a ostatní řemeslné práce v regionech Hradec Králové, Pardubice a Praha.",
       "priceRange": "$$"
     }
     </script>
@@ -50,7 +50,6 @@
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -59,7 +58,7 @@
             --dark: #121212;
             --accent: #9a7d61;
             --line: rgba(18, 18, 18, 0.08);
-            --transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease-out; /* Zrychleno */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -117,7 +116,6 @@
         .lang-switch span { opacity: 0.3; transition: 0.3s; }
         .lang-switch span.active { opacity: 1; color: var(--accent); }
 
-        /* Mobile Menu Toggle */
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
         /* --- CONTENT --- */
@@ -128,13 +126,13 @@
             padding: 60px 60px 120px;
             max-width: 1400px;
             margin: 0 auto;
-            animation: sectionIn 1s forwards;
+            animation: sectionIn 0.3s ease-out forwards; /* ZRYCHLENO A BEZ BLURU */
         }
         .section.active { display: block; }
 
         @keyframes sectionIn {
-            from { opacity: 0; filter: blur(10px); transform: scale(0.98); }
-            to { opacity: 1; filter: blur(0); transform: scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1, h2 {
@@ -157,19 +155,15 @@
         /* --- GALLERY --- */
         .gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); }
-        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
         .g-item:hover img { transform: scale(1.05); }
 
         /* --- ABOUT & CONTACT --- */
         .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
         .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
-        
         .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
-        
         .ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        
         .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
-        
         .full-width-text { grid-column: 1 / -1; margin-top: 40px; font-style: italic; line-height: 1.5; font-size: 1.1rem; }
         
         .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
@@ -188,7 +182,6 @@
 
         footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }
 
-        /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 1024px) {
             header { padding: 20px 30px; }
             .menu-toggle { display: block; }
@@ -200,21 +193,14 @@
             .nav-container.mobile-active { display: flex; }
             nav ul { flex-direction: column; align-items: center; gap: 25px; }
             .lang-switch { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; width: 100%; justify-content: center; }
-            
             main { padding-top: 120px; }
             .section { padding: 40px 20px; }
-
             .hero-flex { flex-direction: column; gap: 40px; }
-            .hero-image-area { width: 100%; }
             .hero-main-img { height: auto; max-height: 500px; width: 100%; }
-
-            .gallery-sculpt { grid-template-columns: 1fr; gap: 15px; }
-            .g-item { height: auto; max-height: none; }
-            .g-item img { height: auto; }
-
+            .gallery-sculpt { grid-template-columns: 1fr; }
+            .g-item { height: auto; }
             .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
             .year-tag { font-size: 6rem; }
-            .ref-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -224,9 +210,7 @@
         <div class="logo-box">
             <img src="logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
         </div>
-        
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
         <div class="nav-container" id="navContainer">
             <nav>
                 <ul>
@@ -251,11 +235,10 @@
                 <div class="hero-info">
                     <p class="main-desc" data-tr="home-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
                     <h3 class="section-sub-title" data-tr="home-portfolio">Portfolio služeb:</h3>
-                    <ul class="service-list" id="services">
-                    </ul>
+                    <ul class="service-list" id="services"></ul>
                 </div>
                 <div class="hero-image-area">
-                    <img src="image1.jpg?v=1.1" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
+                    <img src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -270,10 +253,9 @@
                 <div class="year-tag">2008</div>
                 <div>
                     <h2 data-tr="about-h2">Odkaz.</h2>
-                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
-                    
+                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
                     <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
-                        Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
+                        Na trhu působíme již od roku 2008...
                     </p>
                     <div class="ref-list">
                         <div class="ref-tag">EGE trading s.r.o.</div>
@@ -284,8 +266,7 @@
                         <div class="ref-tag">Skanska a.s.</div>            
                         <div class="ref-tag">ELTODO, a.s.</div>
                         <div class="ref-tag">Helma 365, s.r.o.</div>
-                        
-                        <p class="full-width-text" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
+                        <p class="full-width-text" data-tr="about-p2">...po celé ČR.</p>
                     </div>
                 </div>
             </div>
@@ -295,7 +276,7 @@
             <h2 data-tr="contact-h2">Dialog.</h2>
             <div class="contact-view">
                 <div class="contact-msg" data-tr="contact-msg">
-                    "V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení."
+                    "V případě zájmu o návrh nás neváhejte kontaktovat."
                 </div>
                 <div class="c-box">
                     <span class="c-label">Project Manager</span>
@@ -337,43 +318,31 @@
                 "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
                 "home-h2": "Material and Space.", "home-desc": "Modern look combined with a touch of elegance and luxury.", "home-portfolio": "Our Portfolio:",
                 "gallery-h2": "References.", "about-h2": "Legacy.",
-                "about-vision": "\"We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft, and our passion for design has led us from family living rooms to realizations in the offices of international corporations. Whether it's a small family house or a prestigious headquarters of a multinational company, we approach every square meter with the same responsibility as at the very beginning.\"",
-                "about-p1": "We have been on the market since 2008. Over more than 18 years, we have completed many successful projects for companies such as:",
-                "about-p2": "...to various individual projects of family houses, apartments, and commercial spaces across the Czech Republic.", "contact-h2": "Dialogue.",
-                "contact-msg": "\"If you are interested in design, consultation, or project realization, do not hesitate to contact us. Together we will transform your ideas into a quality design solution.\"",
+                "about-vision": "\"We started with a vision...\"",
+                "about-p1": "We have been on the market since 2008...",
+                "about-p2": "...across the Czech Republic.", "contact-h2": "Dialogue.",
+                "contact-msg": "\"If you are interested...\"",
                 "contact-phone": "Phone", "contact-email": "Email address",
-                "services": ["Visual design, consultation, and project realization with an individual approach", "Decorative painting techniques", "Branding walls", "Painting of residential and commercial spaces", "Drywall works", "Flooring works", "Other construction and craft works"]
+                "services": ["Visual design...", "Decorative painting...", "Branding walls", "Painting...", "Drywall...", "Flooring...", "Other works..."]
             }
         };
 
-        const routeMap = {
-            '': 'home',
-            'galerie': 'gallery',
-            'o-nas': 'about',
-            'kontakt': 'contact'
-        };
-
+        const routeMap = { '': 'home', 'galerie': 'gallery', 'o-nas': 'about', 'kontakt': 'contact' };
         let currentLang = 'cz';
 
         function setLang(lang) {
             currentLang = lang;
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
-                if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                }
+                if (translations[lang][key]) el.innerText = translations[lang][key];
             });
-            
             const list = document.getElementById('services');
             list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
-
             document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         }
 
-        function toggleMenu() {
-            document.getElementById('navContainer').classList.toggle('mobile-active');
-        }
+        function toggleMenu() { document.getElementById('navContainer').classList.toggle('mobile-active'); }
 
         function tab(id, event) {
             if (event) event.preventDefault();
@@ -395,11 +364,8 @@
         }
 
         window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.sectionId) {
-                showSection(event.state.sectionId);
-            } else {
-                handleInitialRouting();
-            }
+            if (event.state && event.state.sectionId) showSection(event.state.sectionId);
+            else handleInitialRouting();
         });
 
         function handleInitialRouting() {
@@ -408,7 +374,6 @@
             showSection(sectionId);
         }
 
-        // --- DYNAMICKÁ GALERIE S INDIVIDUÁLNÍMI ALT TEXTY ---
         const seoDescriptions = {
             2: "Betonová stěrka pro EGE Trading s.r.o. Praha",
             3: "Vertikální malířská technika Praha",
@@ -427,12 +392,12 @@
         const images = [];
         const grid = document.getElementById('gallery-grid');
         for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg?v=${new Date().getTime()}`; 
+            const imgSrc = `image${i}.jpg`; // Odstraněn parametr cache-bustingu pro rychlost
             images.push(imgSrc);
             const item = document.createElement('div');
             item.className = 'g-item';
             const altText = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
-            item.innerHTML = `<img src="${imgSrc}" alt="${altText}" onclick="openLightbox(${i-2})">`;
+            item.innerHTML = `<img src="${imgSrc}" alt="${altText}" loading="lazy" onclick="openLightbox(${i-2})">`;
             grid.appendChild(item);
         }
 
