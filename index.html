@@ -44,7 +44,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://om-design.cz/">
     <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
-    <meta property="og:description" content="Vaše vize. Naše řemeslo. Společný projekt. Realizujeme luxusní povrchy, betonové stěrky a branding walls.">
+    <meta property="og:description" content="Vaše vize. Naše řemeslo. Společný projekt. Realizujeme luxusní povrchy, betonové stěrky and branding walls.">
     <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.2">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
@@ -75,8 +75,7 @@
             position: fixed;
             top: 0; left: 0; 
             width: 100%;
-            padding: 0 60px; /* Snížen vertikální padding hlavičky, abychom měli kontrolu */
-            height: 120px;   /* Fixní výška hlavičky pro stabilitu */
+            padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -88,22 +87,20 @@
         .logo-box {
             display: flex;
             align-items: center;
-            height: 100%;
         }
 
         .logo-box img {
-            height: 115px; 
+            height: 85px; 
             width: auto;
             display: block;
             cursor: pointer;
             margin-left: -15px;
-            /* Tento margin kompenzuje prázdné místo uvnitř SVG */
-            margin-top: 5px; 
+            margin-top: 0;
         }
 
         .nav-container { display: flex; align-items: center; gap: 40px; }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
         nav a {
             text-decoration: none;
             color: var(--dark);
@@ -192,10 +189,10 @@
         footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }
 
         @media (max-width: 1024px) {
-            header { padding: 0 30px; height: 100px; }
+            header { padding: 10px 30px; }
             .menu-toggle { display: block; }
             .nav-container { 
-                position: fixed; top: 100px; left: 0; width: 100%; background: var(--bg); 
+                position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg); 
                 flex-direction: column; padding: 40px; gap: 30px; border-bottom: 1px solid var(--line);
                 display: none; 
             }
@@ -210,7 +207,7 @@
             .g-item { height: auto; }
             .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
             .year-tag { font-size: 6rem; }
-            .logo-box img { height: 90px; margin-top: 0; }
+            .logo-box img { height: 70px; }
         }
     </style>
 </head>
@@ -312,7 +309,6 @@
     </footer>
 
     <script>
-        // --- KONFIGURACE VERZE (Cache Buster) ---
         const webVersion = "2.4"; 
 
         document.getElementById('main-logo').src = `logo.svg?v=${webVersion}`;
