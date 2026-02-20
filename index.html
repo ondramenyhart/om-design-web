@@ -85,10 +85,11 @@
         }
 
         .logo-box img {
-            height: 75px; /* Ponecháno pro zachování rozměru */
+            height: 115px; /* Upraveno z 75px na 115px pro kompenzaci prázdného místa v SVG */
             width: auto;
             display: block;
             cursor: pointer;
+            margin-left: -15px; /* Mírný posun doleva pro lepší zarovnání */
         }
 
         .nav-container { display: flex; align-items: center; gap: 40px; }
@@ -237,7 +238,7 @@
                     <ul class="service-list" id="services"></ul>
                 </div>
                 <div class="hero-image-area">
-                    <img id="hero-img" src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky and designové stěrky OM Design">
+                    <img id="hero-img" src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -302,9 +303,8 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.3"; // Zvýšena verze pro jistotu načtení nového loga
+        const webVersion = "2.4"; 
 
-        // Nastavení verze pro statické soubory - změněno na .svg
         document.getElementById('main-logo').src = `logo.svg?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -315,7 +315,7 @@
                 "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
                 "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“",
                 "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
-                "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",
+                "about-p2": "...přes realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",
                 "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
                 "contact-phone": "Telefon", "contact-email": "Emailová adresa",
                 "services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]
@@ -398,25 +398,20 @@
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE ---
         for (let i = 2; i <= 20; i++) {
             const imgSrc = `image${i}.jpg?v=${webVersion}`; 
             images.push(imgSrc);
-            
             const item = document.createElement('div');
             item.className = 'g-item';
-            
             const img = document.createElement('img');
             img.src = imgSrc;
             img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
             img.loading = "lazy";
             img.onclick = function() { openLightbox(i-2); };
-            
             img.onerror = function() {
                 this.style.display = 'none';
                 this.parentElement.style.background = '#f0f0f0';
             };
-
             item.appendChild(img);
             grid.appendChild(item);
         }
