@@ -85,9 +85,8 @@
         }
 
         .logo-box img {
-            height: 75px;
+            height: 75px; /* Ponecháno pro zachování rozměru */
             width: auto;
-            mix-blend-mode: multiply;
             display: block;
             cursor: pointer;
         }
@@ -208,7 +207,7 @@
 
     <header>
         <div class="logo-box">
-            <img id="main-logo" src="logo.png" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
+            <img id="main-logo" src="logo.svg" alt="OM Design" onclick="tab('home', event)" onerror="this.src='https://placehold.co/300x120/f8f6f2/121212?text=OM+DESIGN'">
         </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-container" id="navContainer">
@@ -238,7 +237,7 @@
                     <ul class="service-list" id="services"></ul>
                 </div>
                 <div class="hero-image-area">
-                    <img id="hero-img" src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky a designové stěrky OM Design">
+                    <img id="hero-img" src="image1.jpg" class="hero-main-img" alt="Dekorativní omítky and designové stěrky OM Design">
                 </div>
             </div>
         </section>
@@ -303,10 +302,10 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.2";
+        const webVersion = "2.3"; // Zvýšena verze pro jistotu načtení nového loga
 
-        // Nastavení verze pro statické obrázky hned po načtení
-        document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
+        // Nastavení verze pro statické soubory - změněno na .svg
+        document.getElementById('main-logo').src = `logo.svg?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
         const translations = {
@@ -399,7 +398,7 @@
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE S POJISTKOU PRO MOBILY ---
+        // --- GENEROVÁNÍ GALERIE ---
         for (let i = 2; i <= 20; i++) {
             const imgSrc = `image${i}.jpg?v=${webVersion}`; 
             images.push(imgSrc);
@@ -413,7 +412,6 @@
             img.loading = "lazy";
             img.onclick = function() { openLightbox(i-2); };
             
-            // Kontrola chyby načtení
             img.onerror = function() {
                 this.style.display = 'none';
                 this.parentElement.style.background = '#f0f0f0';
