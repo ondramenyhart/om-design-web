@@ -75,7 +75,8 @@
             position: fixed;
             top: 0; left: 0; 
             width: 100%;
-            padding: 20px 60px;
+            padding: 0 60px; /* Snížen vertikální padding hlavičky, abychom měli kontrolu */
+            height: 120px;   /* Fixní výška hlavičky pro stabilitu */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -84,12 +85,20 @@
             border-bottom: 1px solid var(--line);
         }
 
+        .logo-box {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
         .logo-box img {
-            height: 115px; /* Upraveno z 75px na 115px pro kompenzaci prázdného místa v SVG */
+            height: 115px; 
             width: auto;
             display: block;
             cursor: pointer;
-            margin-left: -15px; /* Mírný posun doleva pro lepší zarovnání */
+            margin-left: -15px;
+            /* Tento margin kompenzuje prázdné místo uvnitř SVG */
+            margin-top: 5px; 
         }
 
         .nav-container { display: flex; align-items: center; gap: 40px; }
@@ -183,10 +192,10 @@
         footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }
 
         @media (max-width: 1024px) {
-            header { padding: 20px 30px; }
+            header { padding: 0 30px; height: 100px; }
             .menu-toggle { display: block; }
             .nav-container { 
-                position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg); 
+                position: fixed; top: 100px; left: 0; width: 100%; background: var(--bg); 
                 flex-direction: column; padding: 40px; gap: 30px; border-bottom: 1px solid var(--line);
                 display: none; 
             }
@@ -201,6 +210,7 @@
             .g-item { height: auto; }
             .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
             .year-tag { font-size: 6rem; }
+            .logo-box img { height: 90px; margin-top: 0; }
         }
     </style>
 </head>
