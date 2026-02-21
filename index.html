@@ -21,6 +21,7 @@
             background-color: var(--bg);
             color: var(--dark);
             font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
         }
 
         header {
@@ -46,7 +47,6 @@
             letter-spacing: 3px;
             cursor: pointer;
         }
-        nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
         main { padding-top: 140px; }
         .section {
@@ -73,7 +73,7 @@
         .service-list li { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.15rem; font-weight: 200; }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .g-item { height: 600px; overflow: hidden; border: 1px solid var(--line); background: #eee; position: relative; }
+        .g-item { height: 600px; overflow: hidden; border: 1px solid var(--line); background: #eee; }
         .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.3s ease; }
         .g-item img:hover { transform: scale(1.02); }
 
@@ -97,10 +97,10 @@
         <div class="logo-box"><img src="logo.png" onclick="showSection('home')"></div>
         <nav>
             <ul>
-                <li><a onclick="showSection('home')" id="n-home" class="active">Domů</a></li>
-                <li><a onclick="showSection('gallery')" id="n-gallery">Galerie</a></li>
-                <li><a onclick="showSection('about')" id="n-about">O nás</a></li>
-                <li><a onclick="showSection('contact')" id="n-contact">Kontakt</a></li>
+                <li><a onclick="showSection('home')">Domů</a></li>
+                <li><a onclick="showSection('gallery')">Galerie</a></li>
+                <li><a onclick="showSection('about')">O nás</a></li>
+                <li><a onclick="showSection('contact')">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -130,7 +130,8 @@
 
         <section id="gallery" class="section">
             <h2>Ukázky naší práce.</h2>
-            <div class="gallery-grid" id="grid"></div>
+            <div class="gallery-grid" id="grid">
+                </div>
         </section>
 
         <section id="about" class="section">
@@ -159,48 +160,37 @@
     <script>
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            const navBtn = document.getElementById('n-' + id);
-            if(navBtn) navBtn.classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // TADY JSEM POUZE OPRAVIL POČET FOTEK NA 24 PRO CELOU GALERII
-        function initGallery() {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-            
-            const photoList = {
-                2: "02-betonova-sterka-praha.jpg", 3: "03-vertikalni-malirska-technika-praha.jpg", 4: "04-branding-wall-praha.jpg",
-                5: "05-betonova-sterka-hradec-kralove.jpg", 6: "06-branding-wall-hradec-kralove.jpg", 7: "07-branding-wall-hradec-kralove.jpg",
-                8: "08-betonova-sterka-hradec-kralove.jpg", 9: "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", 
-                10: "10-vertikalni-malirska-technika-hradec-kralove.jpg", 11: "11-branding-wall-hradec-kralove.jpg",
-                12: "12-malirska-dekoracni-technika-pardubice.jpg", 13: "13-imitace-betonu-pardubice.jpg",
-                14: "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg", 15: "15-imitace-betonu-pokoj.jpg",
-                16: "16-vertikalni-malirska-technika-pardubice.jpg", 17: "17-imitace-betonu-loznice.jpg",
-                18: "18-ostarena-stena-obyvak-hradec-kralove.jpg", 19: "19-imitace-cihel-dekorace-hradec-kralove.jpg",
-                20: "20-benatsky-stuk-hradec-kralove.jpg", 21: "21-luxusni-sterka-praha.jpg", 
-                22: "22-nater-fasady-praha.jpg", 23: "23-nater-konstrukce-podchod.jpg", 24: "24-rekonstrukce-koupelny-pardubice.jpg"
+        // PŘESNÝ SEZNAM VŠECH 23 FOTEK
+        const photos = [
+            "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
+            "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
+            "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", 
+            "10-vertikalni-malirska-technika-hradec-kralove.jpg", "11-branding-wall-hradec-kralove.jpg",
+            "12-malirska-dekoracni-technika-pardubice.jpg", "13-imitace-betonu-pardubice.jpg",
+            "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg", "15-imitace-betonu-pokoj.jpg",
+            "16-vertikalni-malirska-technika-pardubice.jpg", "17-imitace-betonu-loznice.jpg",
+            "18-ostarena-stena-obyvak-hradec-kralove.jpg", "19-imitace-cihel-dekorace-hradec-kralove.jpg",
+            "20-benatsky-stuk-hradec-kralove.jpg", "21-luxusni-sterka-praha.jpg", 
+            "22-nater-fasady-praha.jpg", "23-nater-konstrukce-podchod.jpg", "24-rekonstrukce-koupelny-pardubice.jpg"
+        ];
+
+        const grid = document.getElementById('grid');
+        photos.forEach(file => {
+            const div = document.createElement('div');
+            div.className = 'g-item';
+            const img = document.createElement('img');
+            img.src = file;
+            img.onclick = () => {
+                document.getElementById('lb-img').src = file;
+                document.getElementById('lightbox').style.display = 'flex';
             };
-
-            for (let i = 2; i <= 24; i++) {
-                if (photoList[i]) {
-                    const div = document.createElement('div');
-                    div.className = 'g-item';
-                    const img = document.createElement('img');
-                    img.src = photoList[i];
-                    img.onclick = function() {
-                        document.getElementById('lb-img').src = this.src;
-                        document.getElementById('lightbox').style.display = 'flex';
-                    };
-                    div.appendChild(img);
-                    grid.appendChild(div);
-                }
-            }
-        }
-
-        window.onload = initGallery;
+            div.appendChild(img);
+            grid.appendChild(div);
+        });
     </script>
 </body>
 </html>
