@@ -85,7 +85,7 @@
         }
 
         .logo-box img {
-            height: 75px; /* Ponecháno pro zachování rozměru */
+            height: 75px; 
             width: auto;
             display: block;
             cursor: pointer;
@@ -301,10 +301,9 @@
     </footer>
 
     <script>
-        // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.5"; // Zvýšena verze pro vynucení načtení změn v JS
+        // --- KONFIGURACE VERZE ---
+        const webVersion = "2.6"; 
 
-        // Nastavení verze pro statické soubory
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -315,37 +314,23 @@
                 "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
                 "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“",
                 "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
-                "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", "contact-h2": "Dialog.",
+                "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.", 
+                "contact-h2": "Dialog.",
                 "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
                 "contact-phone": "Telefon", "contact-email": "Emailová adresa",
                 "services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]
             },
             en: {
-                "nav-home": "Home", 
-                "nav-gallery": "Gallery", 
-                "nav-about": "About", 
-                "nav-contact": "Contact",
-                "home-h2": "Material and Space.", 
-                "home-desc": "Modern look combined with a touch of elegance and luxury.", 
-                "home-portfolio": "Our Portfolio:",
-                "gallery-h2": "References.", 
-                "about-h2": "Legacy.",
+                "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
+                "home-h2": "Material and Space.", "home-desc": "Modern look combined with a touch of elegance and luxury.", "home-portfolio": "Our Portfolio:",
+                "gallery-h2": "References.", "about-h2": "Legacy.",
                 "about-vision": "“We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft and our passion for design has taken us from small living rooms to realizations in the offices of international corporations. Whether it is a small family house or a prestigious headquarters of an international company, we care for every square meter with the same responsibility as at the very beginning.”",
                 "about-p1": "Established in 2008. Over more than 18 years, we have completed many projects for companies such as:",
                 "about-p2": "...to the realization of various individual projects for family houses, apartments, and commercial spaces throughout the Czech Republic.", 
                 "contact-h2": "Dialogue.",
                 "contact-msg": "\"If you are interested in consultation or project realization, do not hesitate to contact us. Together, we will turn your ideas into a high-quality design solution.\"",
-                "contact-phone": "Phone", 
-                "contact-email": "Email address",
-                "services": [
-                    "Visual design, consultation, and project realization with individual approach", 
-                    "Decorative painting techniques", 
-                    "Branding walls", 
-                    "Painting of residential and non-residential spaces", 
-                    "Drywall work", 
-                    "Flooring work", 
-                    "Other construction craft works"
-                ]
+                "contact-phone": "Phone", "contact-email": "Email address",
+                "services": ["Visual design, consultation, and project realization with individual approach", "Decorative painting techniques", "Branding walls", "Painting of residential and non-residential spaces", "Drywall work", "Flooring work", "Other construction craft works"]
             }
         };
 
@@ -354,14 +339,21 @@
 
         function setLang(lang) {
             currentLang = lang;
+            const data = translations[lang];
+            
+            // Texty označené data-tr
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
-                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
+                if (data[key]) el.innerText = data[key];
             });
+
+            // Seznam služeb
             const list = document.getElementById('services');
-            if (list && translations[lang].services) {
-                list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
+            if (list && data.services) {
+                list.innerHTML = data.services.map(s => `<li>${s}</li>`).join('');
             }
+
+            // Tlačítka jazyků
             document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         }
@@ -416,25 +408,20 @@
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE ---
         for (let i = 2; i <= 20; i++) {
             const imgSrc = `image${i}.jpg?v=${webVersion}`; 
             images.push(imgSrc);
-            
             const item = document.createElement('div');
             item.className = 'g-item';
-            
             const img = document.createElement('img');
             img.src = imgSrc;
             img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
             img.loading = "lazy";
             img.onclick = function() { openLightbox(i-2); };
-            
             img.onerror = function() {
                 this.style.display = 'none';
                 this.parentElement.style.background = '#f0f0f0';
             };
-
             item.appendChild(img);
             grid.appendChild(item);
         }
@@ -455,6 +442,7 @@
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
+        // --- START ---
         handleInitialRouting();
         setLang('cz');
     </script>
