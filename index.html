@@ -3,144 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OM Design | Dekorativní omítky</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>OM Design - Dekorativní omítky</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --bg: #f8f6f2; --dark: #121212; --accent: #9a7d61; --line: rgba(18,18,18,0.1); }
+        :root { --bg: #f8f6f2; --dark: #121212; --accent: #9a7d61; --line: rgba(18, 18, 18, 0.08); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; line-height: 1.6; }
-        
-        header { position: fixed; top: 0; width: 100%; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--bg); border-bottom: 1px solid var(--line); }
-        .logo-box img { height: 70px; cursor: pointer; }
+        body { background-color: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; }
+
+        header { position: fixed; top: 0; width: 100%; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background-color: var(--bg); border-bottom: 1px solid var(--line); }
+        .logo-box img { height: 75px; cursor: pointer; }
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { text-decoration: none; color: var(--dark); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
+        nav a { text-decoration: none; color: var(--dark); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; }
 
         main { padding-top: 140px; }
-        .section { display: none; padding: 40px 60px; max-width: 1400px; margin: 0 auto; }
+        .section { display: none; padding: 60px; max-width: 1400px; margin: 0 auto; }
         .section.active { display: block; }
+
+        h1, h2 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; line-height: 0.9; margin-bottom: 60px; }
+
+        .hero-flex { display: flex; gap: 80px; }
+        .main-desc { font-size: 1.6rem; color: var(--accent); font-style: italic; margin-bottom: 40px; }
         
-        h1, h2 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; margin-bottom: 40px; }
-        
-        /* DOMŮ - OPRAVA PÍSMA */
-        .hero { display: flex; gap: 60px; }
-        .hero-text { flex: 1; }
+        /* OPRAVA TLOUŠŤKY PÍSMA */
         .portfolio-title { font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; }
         .service-list { list-style: none; }
-        .service-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 1.2rem; font-weight: 500; } /* Zesíleno */
+        .service-list li { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.1rem; font-weight: 600; } /* Tady je to tučné */
 
-        /* GALERIE - NATVRDO 23 POLÍ */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .g-item { height: 500px; background: #eee; border: 1px solid var(--line); overflow: hidden; }
-        .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: 0.4s; }
-        
-        /* O NÁS */
-        .about-content { font-size: 1.4rem; font-weight: 400; max-width: 1000px; }
-        .vision { font-family: 'Fraunces', serif; font-style: italic; color: var(--accent); font-size: 1.8rem; margin-bottom: 30px; }
+        .g-item { height: 600px; overflow: hidden; border: 1px solid var(--line); background: #eee; }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
 
-        #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248,246,242,0.98); z-index:9999; justify-content:center; align-items:center; }
-        #lightbox img { max-width: 90%; max-height: 85vh; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .about-text { font-size: 1.4rem; font-weight: 400; line-height: 1.6; }
+        .vision-quote { font-family: 'Fraunces', serif; font-style: italic; color: var(--accent); font-size: 1.8rem; margin-bottom: 30px; }
 
-        @media (max-width: 1024px) { .hero { flex-direction: column; } header { padding: 20px; } nav { display: none; } }
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.95); z-index: 9999; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 80vh; border: 10px solid white; }
+
+        @media (max-width: 1024px) { header { padding: 20px; } nav { display: none; } .hero-flex { flex-direction: column; } }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-box"><img src="logo.png" onclick="tab('home')"></div>
-    <nav>
-        <ul>
-            <li><a onclick="tab('home')">Domů</a></li>
-            <li><a onclick="tab('gallery')">Galerie</a></li>
-            <li><a onclick="tab('about')">O nás</a></li>
-            <li><a onclick="tab('contact')">Kontakt</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <div class="logo-box"><img src="logo.png" onclick="showSection('home')"></div>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">Domů</a></li>
+                <li><a onclick="showSection('gallery')">Galerie</a></li>
+                <li><a onclick="showSection('about')">O nás</a></li>
+                <li><a onclick="showSection('contact')">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<main>
-    <section id="home" class="section active">
-        <h1>Materiál a Prostor.</h1>
-        <div class="hero">
-            <div class="hero-text">
-                <p class="vision">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
-                <h3 class="portfolio-title">PORTFOLIO SLUŽEB:</h3>
-                <ul class="service-list">
-                    <li>— Vizuální návrh, konzultace a realizace projektu</li>
-                    <li>— Malířské dekorační techniky</li>
-                    <li>— Branding walls</li>
-                    <li>— Malování bytových i nebytových prostor</li>
-                    <li>— Sádrokartonářské práce</li>
-                    <li>— Podlahářské práce</li>
-                    <li>— Ostatní stavební řemeslné práce</li>
-                </ul>
+    <main>
+        <section id="home" class="section active">
+            <h1>Materiál a Prostor.</h1>
+            <div class="hero-flex">
+                <div style="flex: 1;">
+                    <p class="main-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
+                    <h3 class="portfolio-title">PORTFOLIO SLUŽEB:</h3>
+                    <ul class="service-list">
+                        <li>— Vizuální návrh, konzultace a realizace projektu</li>
+                        <li>— Malířské dekorační techniky</li>
+                        <li>— Branding walls</li>
+                        <li>— Malování bytových i nebytových prostor</li>
+                        <li>— Sádrokartonářské práce</li>
+                        <li>— Podlahářské práce</li>
+                        <li>— Ostatní stavební řemeslné práce</li>
+                    </ul>
+                </div>
+                <div style="flex: 1;">
+                    <img src="image1.jpg" style="width: 100%; height: 600px; object-fit: cover;">
+                </div>
             </div>
-            <div style="flex:1"><img src="image1.jpg" style="width:100%"></div>
-        </div>
-    </section>
+        </section>
 
-    <section id="gallery" class="section">
-        <h2>Naše práce.</h2>
-        <div class="gallery-grid" id="grid"></div>
-    </section>
+        <section id="gallery" class="section">
+            <h2>Ukázky naší práce.</h2>
+            <div class="gallery-grid" id="grid">
+                </div>
+        </section>
 
-    <section id="about" class="section">
-        <h2>Odkaz.</h2>
-        <div class="about-content">
-            <p class="vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
-            <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
-            <p style="margin-top:20px">Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
-        </div>
-    </section>
+        <section id="about" class="section">
+            <h2>Odkaz.</h2>
+            <div class="about-text">
+                <p class="vision-quote">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči.“</p>
+                <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
+            </div>
+        </section>
 
-    <section id="contact" class="section">
-        <h2>Dialog.</h2>
-        <div style="margin-top: 40px; border-top: 2px solid var(--dark); padding-top: 40px;">
-            <p style="font-size: 2.5rem; font-weight: 300;">Mgr. Ondřej Menyhárt</p>
-            <p style="font-size: 2.5rem; font-weight: 300; margin: 20px 0;">+ 420 776 648 619</p>
-            <p style="font-size: 1.8rem; font-weight: 300;">ondra.menyhart@gmail.com</p>
-        </div>
-    </section>
-</main>
+        <section id="contact" class="section">
+            <h2>Dialog.</h2>
+            <div style="margin-top: 40px; border-top: 1px solid var(--dark); padding-top: 40px;">
+                <p style="font-size: 2.5rem; font-weight: 300;">Mgr. Ondřej Menyhárt</p>
+                <p style="font-size: 2.5rem; font-weight: 300; margin: 20px 0;">+ 420 776 648 619</p>
+                <p style="font-size: 1.8rem; font-weight: 300;">ondra.menyhart@gmail.com</p>
+            </div>
+        </section>
+    </main>
 
-<div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
+    <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
-<script>
-    function tab(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        window.scrollTo(0,0);
-    }
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
 
-    const imgs = [
-        "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
-        "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
-        "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", "10-vertikalni-malirska-technika-hradec-kralove.jpg",
-        "11-branding-wall-hradec-kralove.jpg", "12-malirska-dekoracni-technika-pardubice.jpg", "13-imitace-betonu-pardubice.jpg",
-        "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg", "15-imitace-betonu-pokoj.jpg", "16-vertikalni-malirska-technika-pardubice.jpg",
-        "17-imitace-betonu-loznice.jpg", "18-ostarena-stena-obyvak-hradec-kralove.jpg", "19-imitace-cihel-dekorace-hradec-kralove.jpg",
-        "20-benatsky-stuk-hradec-kralove.jpg", "21-luxusni-sterka-praha.jpg", "22-nater-fasady-praha.jpg",
-        "23-nater-konstrukce-podchod.jpg", "24-rekonstrukce-koupelny-pardubice.jpg"
-    ];
+        const images = [
+            "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
+            "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
+            "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", "10-vertikalni-malirska-technika-hradec-kralove.jpg",
+            "11-branding-wall-hradec-kralove.jpg", "12-malirska-dekoracni-technika-pardubice.jpg", "13-imitace-betonu-pardubice.jpg",
+            "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg", "15-imitace-betonu-pokoj.jpg", "16-vertikalni-malirska-technika-pardubice.jpg",
+            "17-imitace-betonu-loznice.jpg", "18-ostarena-stena-obyvak-hradec-kralove.jpg", "19-imitace-cihel-dekorace-hradec-kralove.jpg",
+            "20-benatsky-stuk-hradec-kralove.jpg", "21-luxusni-sterka-praha.jpg", "22-nater-fasady-praha.jpg",
+            "23-nater-konstrukce-podchod.jpg", "24-rekonstrukce-koupelny-pardubice.jpg"
+        ];
 
-    function init() {
         const grid = document.getElementById('grid');
-        grid.innerHTML = '';
-        imgs.forEach(src => {
+        images.forEach(src => {
             const div = document.createElement('div');
             div.className = 'g-item';
-            const img = document.createElement('img');
-            // TADY JE TRIK: Přidáváme unikátní časový údaj, aby prohlížeč nebral fotku z cache
-            img.src = src + "?v=" + new Date().getTime();
-            img.onclick = () => {
-                document.getElementById('lb-img').src = src;
-                document.getElementById('lightbox').style.display = 'flex';
-            };
-            img.onerror = () => div.style.display = 'none';
-            div.appendChild(img);
+            div.innerHTML = `<img src="${src}" onclick="openLb('${src}')">`;
             grid.appendChild(div);
         });
-    }
-    window.onload = init;
-</script>
+
+        function openLb(src) {
+            document.getElementById('lb-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
