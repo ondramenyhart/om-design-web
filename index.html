@@ -85,7 +85,7 @@
         }
 
         .logo-box img {
-            height: 75px; /* Ponecháno pro zachování rozměru */
+            height: 75px;
             width: auto;
             display: block;
             cursor: pointer;
@@ -110,7 +110,6 @@
             content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 1px; background: var(--accent);
         }
 
-        /* Lang Switcher */
         .lang-switch { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-left: 1px solid var(--line); padding-left: 20px; }
         .lang-switch span { opacity: 0.3; transition: 0.3s; }
         .lang-switch span.active { opacity: 1; color: var(--accent); }
@@ -302,9 +301,8 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.4"; // Zvýšena verze pro jistotu načtení nového loga
+        const webVersion = "2.5"; // Aktualizováno pro vynucení stažení nových názvů
 
-        // Nastavení verze pro statické soubory - změněno na .png
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -380,27 +378,66 @@
             showSection(sectionId);
         }
 
+        // --- MAPOVÁNÍ NÁZVŮ SOUBORŮ ---
+        const imageFileNames = {
+            2: "02-betonova-sterka-Praha",
+            3: "03-vertikalni-malirska-technika-praha",
+            4: "04-branding-wall-praha",
+            5: "05-betonova-sterka-hradec-kralove",
+            6: "06-branding-wall-hradec-kralove",
+            7: "07-branding-wall-Hradec-Kralove",
+            8: "08-betonova-sterka-hradec-kralove",
+            9: "09-imitace-betonu-v-provance-stylu-Hradec-Kralove",
+            10: "10-vertikalni-malirska-technika-Hradec-Kralove",
+            11: "11-branding-wall-Hradec-Kralove",
+            12: "12-malirska-dekoracni-technika-pardubice",
+            13: "13-imitace-betonu-pardubice",
+            14: "14-luxusni-sterka-obyvaci-pokoj-Chrudim",
+            15: "15-imitace-betonu-pokoj",
+            16: "16-vertikalni-malirska-technika-pardubice",
+            17: "17-imitace-betonu-loznice",
+            18: "18-ostarena-stena-obyvak-Hradec-Kralove",
+            19: "19-imitace-cihel-dekorace-Hradec-Kralove",
+            20: "20-benatsky-stuk-Hradec-Kralove",
+            21: "21-luxusni-sterka-praha",
+            22: "22-nater-fasady-praha",
+            23: "23-nater-konstrukce-podchod",
+            24: "24-rekonstrukce-koupelny-pardubice"
+        };
+
         const seoDescriptions = {
-            2: "Betonová stěrka pro EGE Trading s.r.o. Praha",
+            2: "Betonová stěrka realizovaná v Praze",
             3: "Vertikální malířská technika Praha",
-            4: "Branding wall EGE Trading s.r.o. Praha",
-            5: "Betonová stěrka Polymed Hradec Králové",
-            6: "Branding wall Polymed Hradec Králové",
-            7: "Branding wall Polymed Hradec Králové",
-            8: "Betonová stěrka Polymed Hradec Králové",
-            9: "Imitace betonu v Provance stylu v rodinném domě Hradec Králové",
-            10: "Vertikální malířská technika v RD v okolí Hradce Králové",
-            11: "Branding wall Polymed Hradec Králové",
-            12: "Vertikální malířská technika bytu v Hradci Králové",
-            13: "Imitace betonu v RD v Hradci Králové"
+            4: "Designová branding wall v Praze",
+            5: "Betonová stěrka v Hradci Králové",
+            6: "Branding wall Hradec Králové",
+            7: "Branding wall pro komerční prostory Hradec Králové",
+            8: "Kvalitní betonová stěrka Hradec Králové",
+            9: "Imitace betonu v Provance stylu Hradec Králové",
+            10: "Vertikální malířská technika RD Hradec Králové",
+            11: "Moderní branding wall Hradec Králové",
+            12: "Malířská dekorační technika v Pardubicích",
+            13: "Imitace betonu v interiéru Pardubice",
+            14: "Luxusní stěrka v obývacím pokoji Chrudim",
+            15: "Imitace betonu v pokoji",
+            16: "Vertikální malířská technika Pardubice",
+            17: "Imitace betonu v ložnici",
+            18: "Ostařená stěna v obývacím pokoji Hradec Králové",
+            19: "Imitace cihel jako dekorace Hradec Králové",
+            20: "Benátský štuk realizace Hradec Králové",
+            21: "Luxusní dekorační stěrka Praha",
+            22: "Nátěr fasády Praha",
+            23: "Nátěr ocelové konstrukce podchod",
+            24: "Kompletní rekonstrukce koupelny Pardubice"
         };
 
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE ---
-        for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg?v=${webVersion}`; 
+        // --- GENEROVÁNÍ GALERIE (Nyní do 24) ---
+        for (let i = 2; i <= 24; i++) {
+            const fileName = imageFileNames[i] || `image${i}`;
+            const imgSrc = `${fileName}.jpg?v=${webVersion}`; 
             images.push(imgSrc);
             
             const item = document.createElement('div');
