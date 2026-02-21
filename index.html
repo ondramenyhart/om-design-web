@@ -252,9 +252,9 @@
                 <div class="year-tag">2008</div>
                 <div>
                     <h2 data-tr="about-h2">Odkaz.</h2>
-                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
+                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
                     <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">
-                        Na trhu působíme již od roku 2008...
+                        Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
                     </p>
                     <div class="ref-list">
                         <div class="ref-tag">EGE trading s.r.o.</div>
@@ -265,7 +265,7 @@
                         <div class="ref-tag">Skanska a.s.</div>            
                         <div class="ref-tag">ELTODO, a.s.</div>
                         <div class="ref-tag">Helma 365, s.r.o.</div>
-                        <p class="full-width-text" data-tr="about-p2">...po celé ČR.</p>
+                        <p class="full-width-text" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@
             <h2 data-tr="contact-h2">Dialog.</h2>
             <div class="contact-view">
                 <div class="contact-msg" data-tr="contact-msg">
-                    "V případě zájmu o návrh nás neváhejte kontaktovat."
+                    "V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení."
                 </div>
                 <div class="c-box">
                     <span class="c-label">Project Manager</span>
@@ -302,9 +302,9 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.4"; // Zvýšena verze pro jistotu načtení nového loga
+        const webVersion = "3.5"; 
 
-        // Nastavení verze pro statické soubory - změněno na .png
+        // Nastavení verze pro statické soubory
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -392,15 +392,53 @@
             10: "Vertikální malířská technika v RD v okolí Hradce Králové",
             11: "Branding wall Polymed Hradec Králové",
             12: "Vertikální malířská technika bytu v Hradci Králové",
-            13: "Imitace betonu v RD v Hradci Králové"
+            13: "Imitace betonu v RD v Hradci Králové",
+            14: "Betonová stěrka v obývacím pokoji",
+            15: "Designová stěrka v ložnici",
+            16: "Vertikální technika v koupelně",
+            17: "Imitace betonu v moderním interiéru",
+            18: "Branding wall pro komerční prostory",
+            19: "Dekorativní techniky v kanceláři",
+            20: "Betonová stěrka v kuchyni",
+            21: "Luxusní stěrka Praha",
+            22: "Nátěr fasády Praha",
+            23: "Nátěr konstrukce",
+            24: "Rekonstrukce koupelny Pardubice"
         };
+
+        const galleryFiles = [
+            "02-betonova-sterka-praha.jpg",
+            "03-vertikalni-malirska-technika-praha.jpg",
+            "04-branding-wall-praha.jpg",
+            "05-betonova-sterka-hradec-kralove.jpg",
+            "06-branding-wall-hradec-kralove.jpg",
+            "07-branding-wall-hradec-kralove.jpg",
+            "08-betonova-sterka-hradec-kralove.jpg",
+            "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg",
+            "10-vertikalni-malirska-technika-hradec-kralove.jpg",
+            "11-branding-wall-hradec-kralove.jpg",
+            "12-malirska-dekoracni-technika-pardubice.jpg",
+            "13-imitace-betonu-pardubice.jpg",
+            "14-imitace-betonu-hradec-kralove.jpg",
+            "15-imitace-betonu-pokoj.jpg",
+            "16-vertikalni-malirska-technika-pardubice.jpg",
+            "17-imitace-betonu-loznice.jpg",
+            "18-imitace-betonu-koupelna.jpg",
+            "19-imitace-cihel-dekorace-hradec-kralove.jpg",
+            "20-benatsky-stuk-hradec-kralove.jpg",
+            "21-luxusni-sterka-praha.jpg",
+            "22-nater-fasady-praha.jpg",
+            "23-nater-konstrukce-podchod.jpg",
+            "24-rekonstrukce-koupelny-pardubice.jpg"
+        ];
 
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE ---
-        for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg?v=${webVersion}`; 
+        // --- GENEROVÁNÍ GALERIE PODLE SOUBORŮ ---
+        galleryFiles.forEach((fileName, idx) => {
+            const imgNum = idx + 2;
+            const imgSrc = `${fileName}?v=${webVersion}`; 
             images.push(imgSrc);
             
             const item = document.createElement('div');
@@ -408,9 +446,9 @@
             
             const img = document.createElement('img');
             img.src = imgSrc;
-            img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
+            img.alt = seoDescriptions[imgNum] || `Realizace dekorativní omítky OM Design ${imgNum}`;
             img.loading = "lazy";
-            img.onclick = function() { openLightbox(i-2); };
+            img.onclick = function() { openLightbox(idx); };
             
             img.onerror = function() {
                 this.style.display = 'none';
@@ -419,7 +457,7 @@
 
             item.appendChild(img);
             grid.appendChild(item);
-        }
+        });
 
         let currentIdx = 0;
         function openLightbox(idx) {
