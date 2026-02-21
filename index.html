@@ -70,7 +70,6 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 0; left: 0; 
@@ -85,7 +84,7 @@
         }
 
         .logo-box img {
-            height: 75px; /* Ponecháno pro zachování rozměru */
+            height: 75px;
             width: auto;
             display: block;
             cursor: pointer;
@@ -110,14 +109,12 @@
             content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 1px; background: var(--accent);
         }
 
-        /* Lang Switcher */
         .lang-switch { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-left: 1px solid var(--line); padding-left: 20px; }
         .lang-switch span { opacity: 0.3; transition: 0.3s; }
         .lang-switch span.active { opacity: 1; color: var(--accent); }
 
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- CONTENT --- */
         main { padding-top: 140px; }
 
         .section {
@@ -140,7 +137,6 @@
             font-weight: 300; line-height: 0.9; margin-bottom: 60px; letter-spacing: -3px;
         }
 
-        /* --- HOME --- */
         .hero-flex { display: flex; gap: 80px; align-items: flex-start; }
         .hero-info { flex: 1.2; }
         .hero-image-area { flex: 0.8; }
@@ -151,13 +147,11 @@
         .service-list li::before { content: "—"; margin-right: 20px; color: var(--accent); }
         .hero-main-img { width: 100%; height: 600px; object-fit: cover; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); }
 
-        /* --- GALLERY --- */
         .gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); background: #eee; }
         .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
         .g-item:hover img { transform: scale(1.05); }
 
-        /* --- ABOUT & CONTACT --- */
         .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
         .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
         .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
@@ -171,7 +165,6 @@
         .c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; display: block; opacity: 0.5; }
         .c-val { font-size: 2.2rem; font-weight: 200; text-decoration: none; color: inherit; display: block; margin-bottom: 40px; }
 
-        /* --- LIGHTBOX --- */
         #lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.98); justify-content: center; align-items: center; backdrop-filter: blur(10px); }
         #lightbox-img { max-width: 90%; max-height: 85vh; box-shadow: 0 30px 60px rgba(0,0,0,0.15); border: 10px solid white; }
         .lb-btn { position: absolute; color: var(--dark); font-size: 2rem; cursor: pointer; padding: 20px; }
@@ -301,10 +294,8 @@
     </footer>
 
     <script>
-        // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "3.5"; 
+        const webVersion = "3.6"; 
 
-        // Nastavení verze pro statické soubory
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -380,32 +371,6 @@
             showSection(sectionId);
         }
 
-        const seoDescriptions = {
-            2: "Betonová stěrka pro EGE Trading s.r.o. Praha",
-            3: "Vertikální malířská technika Praha",
-            4: "Branding wall EGE Trading s.r.o. Praha",
-            5: "Betonová stěrka Polymed Hradec Králové",
-            6: "Branding wall Polymed Hradec Králové",
-            7: "Branding wall Polymed Hradec Králové",
-            8: "Betonová stěrka Polymed Hradec Králové",
-            9: "Imitace betonu v Provance stylu v rodinném domě Hradec Králové",
-            10: "Vertikální malířská technika v RD v okolí Hradce Králové",
-            11: "Branding wall Polymed Hradec Králové",
-            12: "Vertikální malířská technika bytu v Hradci Králové",
-            13: "Imitace betonu v RD v Hradci Králové",
-            14: "Betonová stěrka v obývacím pokoji",
-            15: "Designová stěrka v ložnici",
-            16: "Vertikální technika v koupelně",
-            17: "Imitace betonu v moderním interiéru",
-            18: "Branding wall pro komerční prostory",
-            19: "Dekorativní techniky v kanceláři",
-            20: "Betonová stěrka v kuchyni",
-            21: "Luxusní stěrka Praha",
-            22: "Nátěr fasády Praha",
-            23: "Nátěr konstrukce",
-            24: "Rekonstrukce koupelny Pardubice"
-        };
-
         const galleryFiles = [
             "02-betonova-sterka-praha.jpg",
             "03-vertikalni-malirska-technika-praha.jpg",
@@ -432,29 +397,21 @@
             "24-rekonstrukce-koupelny-pardubice.jpg"
         ];
 
-        const images = [];
+        const fullImageUrls = galleryFiles.map(name => `${name}?v=${webVersion}`);
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE PODLE SOUBORŮ ---
         galleryFiles.forEach((fileName, idx) => {
-            const imgNum = idx + 2;
-            const imgSrc = `${fileName}?v=${webVersion}`; 
-            images.push(imgSrc);
-            
             const item = document.createElement('div');
             item.className = 'g-item';
-            
             const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = seoDescriptions[imgNum] || `Realizace dekorativní omítky OM Design ${imgNum}`;
+            img.src = `${fileName}?v=${webVersion}`;
+            img.alt = "Realizace OM Design";
             img.loading = "lazy";
             img.onclick = function() { openLightbox(idx); };
-            
             img.onerror = function() {
                 this.style.display = 'none';
                 this.parentElement.style.background = '#f0f0f0';
             };
-
             item.appendChild(img);
             grid.appendChild(item);
         });
@@ -462,7 +419,7 @@
         let currentIdx = 0;
         function openLightbox(idx) {
             currentIdx = idx;
-            document.getElementById('lightbox-img').src = images[currentIdx];
+            document.getElementById('lightbox-img').src = fullImageUrls[currentIdx];
             document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -471,8 +428,8 @@
             document.body.style.overflow = 'auto';
         }
         function changeImage(dir) {
-            currentIdx = (currentIdx + dir + images.length) % images.length;
-            document.getElementById('lightbox-img').src = images[currentIdx];
+            currentIdx = (currentIdx + dir + fullImageUrls.length) % fullImageUrls.length;
+            document.getElementById('lightbox-img').src = fullImageUrls[currentIdx];
         }
 
         handleInitialRouting();
