@@ -3,77 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OM Design - Dekorativní omítky</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>OM Design | Dekorativní omítky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #f8f6f2; --dark: #121212; --accent: #9a7d61; --line: rgba(18,18,18,0.1); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; line-height: 1.6; }
         
-        /* HEADER */
         header { position: fixed; top: 0; width: 100%; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--bg); border-bottom: 1px solid var(--line); }
         .logo-box img { height: 70px; cursor: pointer; }
-        nav ul { display: flex; list-style: none; gap: 35px; }
-        nav a { text-decoration: none; color: var(--dark); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { text-decoration: none; color: var(--dark); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
 
-        /* MAIN SECTIONS */
-        main { padding-top: 140px; min-height: 100vh; }
-        .section { display: none; padding: 40px 60px; max-width: 1300px; margin: 0 auto; animation: fadeIn 0.5s ease; }
+        main { padding-top: 140px; }
+        .section { display: none; padding: 40px 60px; max-width: 1400px; margin: 0 auto; }
         .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h1, h2 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; line-height: 1; margin-bottom: 50px; }
         
-        /* HOME */
-        .hero { display: flex; gap: 60px; align-items: flex-start; }
-        .hero-text { flex: 1.2; }
-        .hero-img { flex: 0.8; }
-        .hero-img img { width: 100%; height: auto; border: 1px solid var(--line); }
-        .vision { font-family: 'Fraunces', serif; font-style: italic; color: var(--accent); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 40px; }
+        h1, h2 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; margin-bottom: 40px; }
         
-        .portfolio-title { font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; color: var(--dark); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        /* DOMŮ - OPRAVA PÍSMA */
+        .hero { display: flex; gap: 60px; }
+        .hero-text { flex: 1; }
+        .portfolio-title { font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; }
         .service-list { list-style: none; }
-        .service-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 1.15rem; font-weight: 400; }
+        .service-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 1.2rem; font-weight: 500; } /* Zesíleno */
 
-        /* GALLERY */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-        .g-item { aspect-ratio: 3/4; overflow: hidden; background: #eee; border: 1px solid var(--line); }
-        .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: 0.5s; }
-        .g-item img:hover { transform: scale(1.05); }
+        /* GALERIE - NATVRDO 23 POLÍ */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .g-item { height: 500px; background: #eee; border: 1px solid var(--line); overflow: hidden; }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: 0.4s; }
+        
+        /* O NÁS */
+        .about-content { font-size: 1.4rem; font-weight: 400; max-width: 1000px; }
+        .vision { font-family: 'Fraunces', serif; font-style: italic; color: var(--accent); font-size: 1.8rem; margin-bottom: 30px; }
 
-        /* ABOUT */
-        .about-content { max-width: 900px; font-size: 1.3rem; font-weight: 300; }
-        .about-content p { margin-bottom: 25px; }
+        #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248,246,242,0.98); z-index:9999; justify-content:center; align-items:center; }
+        #lightbox img { max-width: 90%; max-height: 85vh; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        /* CONTACT */
-        .contact-info { margin-top: 50px; }
-        .contact-row { margin-bottom: 30px; }
-        .label { font-size: 0.8rem; letter-spacing: 3px; font-weight: 600; color: var(--accent); }
-        .value { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; }
-
-        /* LIGHTBOX */
-        #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248,246,242,0.98); z-index:2000; justify-content:center; align-items:center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 85vh; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 5px solid white; }
-
-        @media (max-width: 900px) {
-            header { padding: 20px; }
-            nav { display: none; }
-            .hero { flex-direction: column; }
-            .section { padding: 20px; }
-        }
+        @media (max-width: 1024px) { .hero { flex-direction: column; } header { padding: 20px; } nav { display: none; } }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-box"><img src="logo.png" onclick="nav('home')"></div>
+    <div class="logo-box"><img src="logo.png" onclick="tab('home')"></div>
     <nav>
         <ul>
-            <li><a onclick="nav('home')">Domů</a></li>
-            <li><a onclick="nav('gallery')">Galerie</a></li>
-            <li><a onclick="nav('about')">O nás</a></li>
-            <li><a onclick="nav('contact')">Kontakt</a></li>
+            <li><a onclick="tab('home')">Domů</a></li>
+            <li><a onclick="tab('gallery')">Galerie</a></li>
+            <li><a onclick="tab('about')">O nás</a></li>
+            <li><a onclick="tab('contact')">Kontakt</a></li>
         </ul>
     </nav>
 </header>
@@ -95,59 +74,44 @@
                     <li>— Ostatní stavební řemeslné práce</li>
                 </ul>
             </div>
-            <div class="hero-img">
-                <img src="image1.jpg" alt="OM Design">
-            </div>
+            <div style="flex:1"><img src="image1.jpg" style="width:100%"></div>
         </div>
     </section>
 
     <section id="gallery" class="section">
-        <h1>Naše práce.</h1>
-        <div class="gallery-grid" id="grid">
-            </div>
+        <h2>Naše práce.</h2>
+        <div class="gallery-grid" id="grid"></div>
     </section>
 
     <section id="about" class="section">
-        <h1>Odkaz.</h1>
+        <h2>Odkaz.</h2>
         <div class="about-content">
             <p class="vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
             <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
-            <p>Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
+            <p style="margin-top:20px">Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
         </div>
     </section>
 
     <section id="contact" class="section">
-        <h1>Dialog.</h1>
-        <p class="vision">V případě zájmu nás neváhejte kontaktovat.</p>
-        <div class="contact-info">
-            <div class="contact-row">
-                <p class="label">PROJECT MANAGER</p>
-                <p class="value">Mgr. Ondřej Menyhárt</p>
-            </div>
-            <div class="contact-row">
-                <p class="label">TELEFON</p>
-                <p class="value">+ 420 776 648 619</p>
-            </div>
-            <div class="contact-row">
-                <p class="label">EMAIL</p>
-                <p class="value" style="font-size: 1.5rem;">ondra.menyhart@gmail.com</p>
-            </div>
+        <h2>Dialog.</h2>
+        <div style="margin-top: 40px; border-top: 2px solid var(--dark); padding-top: 40px;">
+            <p style="font-size: 2.5rem; font-weight: 300;">Mgr. Ondřej Menyhárt</p>
+            <p style="font-size: 2.5rem; font-weight: 300; margin: 20px 0;">+ 420 776 648 619</p>
+            <p style="font-size: 1.8rem; font-weight: 300;">ondra.menyhart@gmail.com</p>
         </div>
     </section>
 </main>
 
-<div id="lightbox" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
 <script>
-    // Navigace
-    function nav(id) {
+    function tab(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         window.scrollTo(0,0);
     }
 
-    // Definice fotek přesně podle vašeho GitHubu
-    const photos = [
+    const imgs = [
         "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
         "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
         "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", "10-vertikalni-malirska-technika-hradec-kralove.jpg",
@@ -158,28 +122,25 @@
         "23-nater-konstrukce-podchod.jpg", "24-rekonstrukce-koupelny-pardubice.jpg"
     ];
 
-    const grid = document.getElementById('grid');
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-
-    // Generování galerie
-    photos.forEach(filename => {
-        const div = document.createElement('div');
-        div.className = 'g-item';
-        const img = document.createElement('img');
-        // Cache busting - přidá unikátní kód za název fotky, aby se načetla čerstvá verze
-        img.src = filename + "?v=" + Math.random().toString(36).substring(7);
-        img.onclick = () => {
-            lbImg.src = filename;
-            lb.style.display = 'flex';
-        };
-        // Ošetření chyby, pokud by fotka chyběla
-        img.onerror = () => div.style.display = 'none';
-        
-        div.appendChild(img);
-        grid.appendChild(div);
-    });
+    function init() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = '';
+        imgs.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'g-item';
+            const img = document.createElement('img');
+            // TADY JE TRIK: Přidáváme unikátní časový údaj, aby prohlížeč nebral fotku z cache
+            img.src = src + "?v=" + new Date().getTime();
+            img.onclick = () => {
+                document.getElementById('lb-img').src = src;
+                document.getElementById('lightbox').style.display = 'flex';
+            };
+            img.onerror = () => div.style.display = 'none';
+            div.appendChild(img);
+            grid.appendChild(div);
+        });
+    }
+    window.onload = init;
 </script>
-
 </body>
 </html>
