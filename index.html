@@ -47,6 +47,7 @@
             letter-spacing: 3px;
             cursor: pointer;
         }
+        nav a.active { color: var(--accent); }
 
         main { padding-top: 140px; }
         .section {
@@ -65,27 +66,34 @@
             margin-bottom: 60px;
         }
 
-        /* --- STYLY PRO KARTU DOMŮ --- */
+        /* --- HOME --- */
         .hero-flex { display: flex; gap: 80px; }
         .main-desc { font-size: 1.6rem; color: var(--accent); font-style: italic; margin-bottom: 40px; }
-        .portfolio-title { letter-spacing: 2px; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
+        .portfolio-title { letter-spacing: 2px; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; border-left: 3px solid var(--accent); padding-left: 15px; }
         .service-list { list-style: none; }
         .service-list li { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.15rem; font-weight: 200; }
+        .service-list li::before { content: "—"; margin-right: 20px; color: var(--accent); }
 
-        /* --- STYLY PRO KARTU GALERIE --- */
+        /* --- GALLERY --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         .g-item { height: 600px; overflow: hidden; border: 1px solid var(--line); background: #eee; }
         .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.3s ease; }
-        .g-item img:hover { transform: scale(1.02); }
 
-        /* --- STYLY PRO KARTU O NÁS --- */
-        .about-text { font-size: 1.4rem; font-weight: 400; line-height: 1.6; max-width: 1000px; }
-        .vision-quote { font-family: 'Fraunces', serif; font-style: italic; color: var(--accent); font-size: 1.8rem; margin-bottom: 30px; font-weight: 300; }
+        /* --- ABOUT (Z vašeho kódu) --- */
+        .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
+        .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
+        .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }
+        .ref-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- STYLY PRO KARTU KONTAKT --- */
-        .contact-grid { margin-top: 40px; border-top: 2px solid var(--dark); padding-top: 60px; }
-        .contact-label { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; color: var(--accent); }
-        .contact-value { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; margin-bottom: 40px; font-family: 'Fraunces', serif; }
+        /* --- CONTACT (Z vašeho kódu) --- */
+        .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+        .contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; line-height: 1.3; color: var(--accent); }
+        .c-box { border-top: 1px solid var(--dark); padding-top: 40px; }
+        .c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; display: block; opacity: 0.5; }
+        .c-val { font-size: 2.2rem; font-weight: 200; text-decoration: none; color: inherit; display: block; margin-bottom: 40px; }
+
+        footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; margin-top: 60px; }
 
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.98); z-index: 9999; justify-content: center; align-items: center; cursor: pointer; }
         #lightbox img { max-width: 90%; max-height: 85vh; border: 5px solid white; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
@@ -93,9 +101,8 @@
         @media (max-width: 1024px) {
             header { padding: 20px; }
             nav { display: none; }
-            .hero-flex { flex-direction: column; }
-            .section { padding: 30px 20px; }
-            .contact-value { font-size: 2rem; }
+            .hero-flex, .about-row, .contact-view { flex-direction: column; grid-template-columns: 1fr; gap: 40px; }
+            .year-tag { font-size: 6rem; }
         }
     </style>
 </head>
@@ -105,10 +112,10 @@
         <div class="logo-box"><img src="logo.png" onclick="showSection('home')"></div>
         <nav>
             <ul>
-                <li><a onclick="showSection('home')">Domů</a></li>
-                <li><a onclick="showSection('gallery')">Galerie</a></li>
-                <li><a onclick="showSection('about')">O nás</a></li>
-                <li><a onclick="showSection('contact')">Kontakt</a></li>
+                <li><a onclick="showSection('home')" id="n-home" class="active">Domů</a></li>
+                <li><a onclick="showSection('gallery')" id="n-gallery">Galerie</a></li>
+                <li><a onclick="showSection('about')" id="n-about">O nás</a></li>
+                <li><a onclick="showSection('contact')" id="n-contact">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -119,15 +126,15 @@
             <div class="hero-flex">
                 <div style="flex: 1.2;">
                     <p class="main-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
-                    <h3 class="portfolio-title">PORTFOLIO SLUŽEB:</h3>
+                    <h3 class="portfolio-title">Portfolio služeb:</h3>
                     <ul class="service-list">
-                        <li>— Vizuální návrh, konzultace a realizace projektu s individuálním přístupem</li>
-                        <li>— Malířské dekorační techniky</li>
-                        <li>— Branding walls</li>
-                        <li>— Malování bytových i nebytových prostor</li>
-                        <li>— Sádrokartonářské práce</li>
-                        <li>— Podlahářské práce</li>
-                        <li>— Ostatní stavební řemeslné práce</li>
+                        <li>Vizuální návrh, konzultace a realizace projektu s individuálním přístupem</li>
+                        <li>Malířské dekorační techniky</li>
+                        <li>Branding walls</li>
+                        <li>Malování bytových i nebytových prostor</li>
+                        <li>Sádrokartonářské práce</li>
+                        <li>Podlahářské práce</li>
+                        <li>Ostatní stavební řemeslné práce</li>
                     </ul>
                 </div>
                 <div style="flex: 0.8;">
@@ -142,43 +149,63 @@
         </section>
 
         <section id="about" class="section">
-            <h2>Odkaz.</h2>
-            <div class="about-text">
-                <p class="vision-quote">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
-                <p style="margin-bottom: 25px;">Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
-                <p>Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
+            <div class="about-row">
+                <div class="year-tag">2008</div>
+                <div>
+                    <h2>Odkaz.</h2>
+                    <p class="vision-text">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
+                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;">
+                        Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:
+                    </p>
+                    <div class="ref-list">
+                        <div class="ref-tag">EGE trading s.r.o.</div>
+                        <div class="ref-tag">Polymed medical a.s.</div>
+                        <div class="ref-tag">Bohemia Interactive</div>
+                        <div class="ref-tag">Dazzle Pictures</div>
+                        <div class="ref-tag">MRAMORIT a.s.</div>
+                        <div class="ref-tag">Skanska a.s.</div>             
+                        <div class="ref-tag">ELTODO, a.s.</div>
+                        <div class="ref-tag">Helma 365, s.r.o.</div>
+                    </div>
+                    <p style="margin-top: 40px; font-style: italic; line-height: 1.5; font-size: 1.1rem;">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
+                </div>
             </div>
         </section>
 
         <section id="contact" class="section">
             <h2>Dialog.</h2>
-            <div class="contact-grid">
-                <div>
-                    <p class="contact-label">Project Manager</p>
-                    <p class="contact-value">Mgr. Ondřej Menyhárt</p>
+            <div class="contact-view">
+                <div class="contact-msg">
+                    "V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat."
                 </div>
-                <div>
-                    <p class="contact-label">Telefon</p>
-                    <p class="contact-value">+ 420 776 648 619</p>
-                </div>
-                <div>
-                    <p class="contact-label">Email</p>
-                    <p class="contact-value" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">ondra.menyhart@gmail.com</p>
+                <div class="c-box">
+                    <span class="c-label">Project Manager</span>
+                    <span class="c-val">Mgr. Ondřej Menyhárt</span>
+                    <span class="c-label">Telefon</span>
+                    <a href="tel:+420776648619" class="c-val">+ 420 776 648 619</a>
+                    <span class="c-label">Emailová adresa</span>
+                    <a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.5rem;">ondra.menyhart@gmail.com</a>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer>
+        &copy; 2008 — 2026 OM DESIGN &bull; CZECH REPUBLIC
+    </footer>
 
     <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
     <script>
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            document.getElementById('n-' + id).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        const images = [
+        const galleryImages = [
             "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
             "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
             "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", 
@@ -193,8 +220,7 @@
 
         function init() {
             const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-            images.forEach(src => {
+            galleryImages.forEach(src => {
                 const div = document.createElement('div');
                 div.className = 'g-item';
                 const img = document.createElement('img');
