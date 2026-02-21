@@ -3,386 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
-    <title> OM Design - Dekorativní omítky, branding walls, výmalby a ostatní řemeslné práce </title>
-    
-    <link rel="canonical" href="https://om-design.cz/">
-    <meta name="description" content="Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety ale i ostatní stavební řemeslné práce. Pro inspiraci si prohlédněte naši galerii">
-    <meta name="robots" content="index, follow">
-
-    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
-    
+    <title>OM Design - Dekorativní omítky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #f8f6f2;
-            --dark: #121212;
-            --accent: #9a7d61;
-            --line: rgba(18, 18, 18, 0.08);
-            --transition: all 0.3s ease-out;
-        }
-
+        :root { --bg: #f8f6f2; --dark: #121212; --accent: #9a7d61; --line: rgba(18,18,18,0.08); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: var(--bg);
-            color: var(--dark);
-            font-family: 'Hanken Grotesk', sans-serif;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: fixed;
-            top: 0; left: 0; 
-            width: 100%;
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background-color: var(--bg);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .logo-box img { height: 75px; width: auto; cursor: pointer; }
-        .nav-container { display: flex; align-items: center; gap: 40px; }
+        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; line-height: 1.6; }
+        header { position: fixed; top: 0; width: 100%; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--bg); border-bottom: 1px solid var(--line); }
+        .logo-box img { height: 70px; cursor: pointer; }
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            transition: 0.3s;
-            position: relative;
-        }
-        nav a:hover, nav a.active { color: var(--accent); }
-        nav a.active::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 1px; background: var(--accent);
-        }
-
-        .lang-switch { display: flex; gap: 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border-left: 1px solid var(--line); padding-left: 20px; }
-        .lang-switch span { opacity: 0.3; }
-        .lang-switch span.active { opacity: 1; color: var(--accent); }
-
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
+        nav a { text-decoration: none; color: var(--dark); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; }
         main { padding-top: 140px; }
-        .section {
-            display: none;
-            padding: 60px 60px 120px;
-            max-width: 1400px;
-            margin: 0 auto;
-            animation: sectionIn 0.3s ease-out forwards;
-        }
+        .section { display: none; padding: 40px 60px; max-width: 1400px; margin: 0 auto; }
         .section.active { display: block; }
-
-        @keyframes sectionIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1, h2 {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 300; line-height: 0.9; margin-bottom: 60px; letter-spacing: -3px;
-        }
-
-        .hero-flex { display: flex; gap: 80px; align-items: flex-start; }
-        .hero-info { flex: 1.2; }
-        .hero-image-area { flex: 0.8; }
-        .main-desc { font-size: 1.6rem; font-weight: 200; margin-bottom: 50px; line-height: 1.4; color: var(--accent); font-family: 'Fraunces', serif; font-style: italic; }
-        .section-sub-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 600; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 15px; }
-        .service-list { list-style: none; margin-top: 10px; }
-        .service-list li { padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 1.1rem; font-weight: 200; display: flex; align-items: center; }
-        .service-list li::before { content: "—"; margin-right: 20px; color: var(--accent); }
-        .hero-main-img { width: 100%; height: 600px; object-fit: cover; }
-
-        .gallery-sculpt { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .g-item { height: 600px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--line); background: #eee; }
-        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
-        .g-item:hover img { transform: scale(1.05); }
-
-        .about-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; }
-        .year-tag { font-family: 'Fraunces', serif; font-size: 12rem; line-height: 1; color: var(--accent); opacity: 0.15; }
-        .vision-text { font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--accent); margin-bottom: 40px; }
-        .ref-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .ref-tag { padding: 15px; border-bottom: 1px solid var(--line); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
-
-        .contact-view { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
-        .contact-msg { font-family: 'Fraunces', serif; font-size: 2.2rem; font-style: italic; color: var(--accent); }
-        .c-box { border-top: 1px solid var(--dark); padding-top: 40px; }
-        .c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; display: block; opacity: 0.5; }
-        .c-val { font-size: 2.2rem; font-weight: 200; text-decoration: none; color: inherit; display: block; margin-bottom: 40px; }
-
-        #lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 246, 242, 0.98); justify-content: center; align-items: center; backdrop-filter: blur(10px); }
-        #lightbox-img { max-width: 90%; max-height: 85vh; border: 10px solid white; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .lb-btn { position: absolute; color: var(--dark); font-size: 2rem; cursor: pointer; padding: 20px; }
-        .lb-close { top: 30px; right: 30px; }
-        .lb-prev { left: 30px; }
-        .lb-next { right: 30px; }
-
-        footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; opacity: 0.4; }
-
-        @media (max-width: 1024px) {
-            header { padding: 20px 30px; }
-            .menu-toggle { display: block; }
-            .nav-container { 
-                position: fixed; top: 110px; left: 0; width: 100%; background: var(--bg); 
-                flex-direction: column; padding: 40px; display: none; border-bottom: 1px solid var(--line);
-            }
-            .nav-container.mobile-active { display: flex; }
-            nav ul { flex-direction: column; align-items: center; }
-            .gallery-sculpt { grid-template-columns: 1fr; }
-            .g-item { height: 400px; }
-            .about-row, .contact-view { grid-template-columns: 1fr; gap: 40px; }
-        }
+        h1 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; margin-bottom: 40px; line-height: 0.9; }
+        /* OPRAVA PÍSMA O NÁS */
+        #about p { font-family: 'Hanken Grotesk', sans-serif !important; font-size: 1.4rem; font-weight: 200; margin-bottom: 25px; }
+        .vision { font-family: 'Fraunces', serif !important; font-style: italic; color: var(--accent); font-size: 1.8rem !important; }
+        /* GALERIE */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .g-item { height: 550px; background: #eee; overflow: hidden; border: 1px solid var(--line); }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: 0.5s; }
+        .g-item img:hover { transform: scale(1.05); }
+        .service-list { list-style: none; margin-bottom: 40px; }
+        .service-list li { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.2rem; font-weight: 200; }
+        #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248,246,242,0.98); z-index:9999; justify-content:center; align-items:center; }
+        #lightbox img { max-width: 90%; max-height: 85vh; border: 10px solid white; }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo-box">
-            <img src="logo.png" alt="OM Design" onclick="tab('home', event)">
-        </div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <div class="nav-container" id="navContainer">
-            <nav>
-                <ul>
-                    <li><a href="/" onclick="tab('home', event)" id="t-home" class="active" data-tr="nav-home">Domů</a></li>
-                    <li><a href="/galerie" onclick="tab('gallery', event)" id="t-gallery" data-tr="nav-gallery">Galerie</a></li>
-                    <li><a href="/o-nas" onclick="tab('about', event)" id="t-about" data-tr="nav-about">O nás</a></li>
-                    <li><a href="/kontakt" onclick="tab('contact', event)" id="t-contact" data-tr="nav-contact">Kontakt</a></li>
-                </ul>
-            </nav>
-            <div class="lang-switch">
-                <span id="lang-cz" class="active" onclick="setLang('cz')">CZ</span>
-                <span>|</span>
-                <span id="lang-en" onclick="setLang('en')">EN</span>
-            </div>
-        </div>
+        <div class="logo-box"><img src="logo.png" onclick="tab('home')"></div>
+        <nav>
+            <ul>
+                <li><a onclick="tab('home')">Domů</a></li>
+                <li><a onclick="tab('gallery')">Galerie</a></li>
+                <li><a onclick="tab('about')">O nás</a></li>
+                <li><a onclick="tab('contact')">Kontakt</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section id="home" class="section active">
-            <h1 data-tr="home-h2">Materiál a Prostor.</h1>
-            <div class="hero-flex">
-                <div class="hero-info">
-                    <p class="main-desc" data-tr="home-desc">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
-                    <h3 class="section-sub-title" data-tr="home-portfolio">Portfolio služeb:</h3>
-                    <ul class="service-list" id="services"></ul>
-                </div>
-                <div class="hero-image-area">
-                    <img src="image1.jpg" class="hero-main-img" alt="OM Design Realizace">
-                </div>
-            </div>
+            <h1>Materiál a Prostor.</h1>
+            <p class="vision">Moderní vzhled propojený s nádechem elegance a luxusu.</p>
+            <h3 style="margin: 40px 0 20px; letter-spacing: 3px; font-weight: 600;">PORTFOLIO SLUŽEB:</h3>
+            <ul class="service-list">
+                <li>— Vizuální návrh, konzultace a realizace projektu s individuálním přístupem</li>
+                <li>— Malířské dekorační techniky</li>
+                <li>— Branding walls</li>
+                <li>— Malování bytových i nebytových prostor</li>
+                <li>— Sádrokartonářské práce</li>
+                <li>— Podlahářské práce</li>
+                <li>— Ostatní stavební řemeslné práce</li>
+            </ul>
         </section>
 
         <section id="gallery" class="section">
-            <h2 data-tr="gallery-h2">Ukázky naší práce.</h2>
-            <div class="gallery-sculpt" id="gallery-grid"></div>
+            <h1>Naše práce.</h1>
+            <div class="gallery-grid" id="grid"></div>
         </section>
 
         <section id="about" class="section">
-            <div class="about-row">
-                <div class="year-tag">2008</div>
-                <div>
-                    <h2 data-tr="about-h2">Odkaz.</h2>
-                    <p class="vision-text" data-tr="about-vision"></p>
-                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1"></p>
-                    <div class="ref-list">
-                        <div class="ref-tag">EGE trading s.r.o.</div>
-                        <div class="ref-tag">Polymed medical a.s.</div>
-                        <div class="ref-tag">Bohemia Interactive</div>
-                        <div class="ref-tag">Dazzle Pictures</div>
-                        <div class="ref-tag">MRAMORIT a.s.</div>
-                        <div class="ref-tag">Skanska a.s.</div>
-                        <div class="ref-tag">ELTODO, a.s.</div>
-                        <div class="ref-tag">Helma 365, s.r.o.</div>
-                    </div>
-                </div>
-            </div>
+            <h1>Odkaz.</h1>
+            <p class="vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
+            <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
         </section>
 
         <section id="contact" class="section">
-            <h2 data-tr="contact-h2">Dialog.</h2>
-            <div class="contact-view">
-                <div class="contact-msg" data-tr="contact-msg"></div>
-                <div class="c-box">
-                    <span class="c-label">Project Manager</span>
-                    <span class="c-val">Mgr. Ondřej Menyhárt</span>
-                    <span class="c-label" data-tr="contact-phone">Telefon</span>
-                    <a href="tel:+420776648619" class="c-val">+ 420 776 648 619</a>
-                    <span class="c-label" data-tr="contact-email">Emailová adresa</span>
-                    <a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.5rem;">ondra.menyhart@gmail.com</a>
-                </div>
+            <h1>Dialog.</h1>
+            <p class="vision">"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat."</p>
+            <div style="margin-top: 40px; border-top: 1px solid #121212; padding-top: 40px;">
+                <p style="font-size: 0.8rem; letter-spacing: 3px;">PROJECT MANAGER</p>
+                <p style="font-size: 2.2rem; font-weight: 200;">Mgr. Ondřej Menyhárt</p>
+                <p style="font-size: 2.2rem; font-weight: 200;">+ 420 776 648 619</p>
+                <p style="font-size: 1.5rem; font-weight: 200;">ondra.menyhart@gmail.com</p>
             </div>
         </section>
     </main>
 
-    <div id="lightbox">
-        <span class="lb-btn lb-close" onclick="closeLightbox()">&times;</span>
-        <span class="lb-btn lb-prev" onclick="changeImage(-1)">&#10094;</span>
-        <span class="lb-btn lb-next" onclick="changeImage(1)">&#10095;</span>
-        <img id="lightbox-img" src="">
-    </div>
-
-    <footer>&copy; 2008 — 2026 OM DESIGN &bull; CZECH REPUBLIC</footer>
+    <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
     <script>
-        const webVer = "8.0";
-
-        const translations = {
-            cz: {
-                "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
-                "home-h2": "Materiál a Prostor.", 
-                "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", 
-                "home-portfolio": "Portfolio služeb:",
-                "gallery-h2": "Ukázky naší práce.", 
-                "about-h2": "Odkaz.", 
-                "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“",
-                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti i soukromé klienty.",
-                "contact-h2": "Dialog.", 
-                "contact-phone": "Telefon", 
-                "contact-email": "Emailová adresa",
-                "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
-                "services": [
-                    "Vizuální návrh, konzultace a realizace projektu s individuálním přístupem",
-                    "Malířské dekorační techniky",
-                    "Branding walls",
-                    "Malování bytových i nebytových prostor",
-                    "Sádrokartonářské práce",
-                    "Podlahářské práce",
-                    "Ostatní stavební řemeslné práce"
-                ]
-            },
-            en: {
-                "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
-                "home-h2": "Material and Space.", "home-desc": "Modern look combined with elegance and luxury.", "home-portfolio": "Our Portfolio:",
-                "gallery-h2": "Our Work.", "about-h2": "Legacy.", 
-                "about-vision": "„We started with a vision that every home deserves exceptional care...“",
-                "about-p1": "Active on the market since 2008. For over 18 years we have completed many successful projects.",
-                "contact-h2": "Dialogue.", "contact-phone": "Phone", "contact-email": "Email", 
-                "contact-msg": "\"If you are interested in a design or consultation, please do not hesitate to contact us.\"",
-                "services": ["Visual Design", "Decorative Painting", "Branding Walls", "Interior Painting", "Drywall", "Flooring", "Construction Works"]
-            }
-        };
-
-        const imageFileNames = {
-            2: "02-betonova-sterka-praha.jpg",
-            3: "03-vertikalni-malirska-technika-praha.jpg",
-            4: "04-branding-wall-praha.jpg",
-            5: "05-betonova-sterka-hradec-kralove.jpg",
-            6: "06-branding-wall-hradec-kralove.jpg",
-            7: "07-branding-wall-hradec-kralove.jpg",
-            8: "08-betonova-sterka-hradec-kralove.jpg",
-            9: "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg",
-            10: "10-vertikalni-malirska-technika-hradec-kralove.jpg",
-            11: "11-branding-wall-hradec-kralove.jpg",
-            12: "12-malirska-dekoracni-technika-pardubice.jpg",
-            13: "13-imitace-betonu-pardubice.jpg",
-            14: "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg",
-            15: "15-imitace-betonu-pokoj.jpg",
-            16: "16-vertikalni-malirska-technika-pardubice.jpg",
-            17: "17-imitace-betonu-loznice.jpg",
-            18: "18-ostarena-stena-obyvak-hradec-kralove.jpg",
-            19: "19-imitace-cihel-dekorace-hradec-kralove.jpg",
-            20: "20-benatsky-stuk-hradec-kralove.jpg",
-            21: "21-luxusni-sterka-praha.jpg",
-            22: "22-nater-fasady-praha.jpg",
-            23: "23-nater-konstrukce-podchod.jpg",
+        // SEZNAM FOTEK - VŠE MALÝM + .JPG
+        const images = {
+            2: "02-betonova-sterka-praha.jpg", 3: "03-vertikalni-malirska-technika-praha.jpg",
+            4: "04-branding-wall-praha.jpg", 5: "05-betonova-sterka-hradec-kralove.jpg",
+            6: "06-branding-wall-hradec-kralove.jpg", 7: "07-branding-wall-hradec-kralove.jpg",
+            8: "08-betonova-sterka-hradec-kralove.jpg", 9: "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg",
+            10: "10-vertikalni-malirska-technika-hradec-kralove.jpg", 11: "11-branding-wall-hradec-kralove.jpg",
+            12: "12-malirska-dekoracni-technika-pardubice.jpg", 13: "13-imitace-betonu-pardubice.jpg",
+            14: "14-luxusni-sterka-obyvaci-pokoj-chrudim.jpg", 15: "15-imitace-betonu-pokoj.jpg",
+            16: "16-vertikalni-malirska-technika-pardubice.jpg", 17: "17-imitace-betonu-loznice.jpg",
+            18: "18-ostarena-stena-obyvak-hradec-kralove.jpg", 19: "19-imitace-cihel-dekorace-hradec-kralove.jpg",
+            20: "20-benatsky-stuk-hradec-kralove.jpg", 21: "21-luxusni-sterka-praha.jpg",
+            22: "22-nater-fasady-praha.jpg", 23: "23-nater-konstrukce-podchod.jpg",
             24: "24-rekonstrukce-koupelny-pardubice.jpg"
         };
 
-        let currentImgIdx = 0;
-        const galleryImages = [];
+        function tab(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
 
-        function initGallery() {
-            const grid = document.getElementById('gallery-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            galleryImages.length = 0;
-
+        function init() {
+            const grid = document.getElementById('grid');
+            // CYKLUS DO 24 VČETNĚ
             for (let i = 2; i <= 24; i++) {
-                const name = imageFileNames[i];
-                if (!name) continue;
-
-                const fullSrc = name + "?v=" + webVer;
-                galleryImages.push(fullSrc);
-
+                if (!images[i]) continue;
                 const item = document.createElement('div');
                 item.className = 'g-item';
-                const img = document.createElement('img');
-                img.src = fullSrc;
-                img.loading = "lazy";
-                
-                const idx = galleryImages.length - 1;
-                img.onclick = () => openLightbox(idx);
-                img.onerror = function() { this.parentElement.style.display = 'none'; };
-
-                item.appendChild(img);
+                item.innerHTML = `<img src="${images[i]}?v=12" onclick="openLb('${images[i]}')" onerror="this.parentElement.style.display='none'">`;
                 grid.appendChild(item);
             }
         }
 
-        function setLang(lang) {
-            document.querySelectorAll('[data-tr]').forEach(el => {
-                const key = el.getAttribute('data-tr');
-                if (translations[lang][key]) el.innerText = translations[lang][key];
-            });
-            const sList = document.getElementById('services');
-            if (sList) sList.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
-            document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        }
-
-        function toggleMenu() { document.getElementById('navContainer').classList.toggle('mobile-active'); }
-
-        function tab(id, e) {
-            if (e) e.preventDefault();
-            const path = id === 'home' ? '/' : '/' + id;
-            window.history.pushState({sid: id}, '', path);
-            showSection(id);
-        }
-
-        function showSection(id) {
-            const section = document.getElementById(id);
-            if (!section) return;
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            section.classList.add('active');
-            const nav = document.getElementById('t-' + id);
-            if (nav) nav.classList.add('active');
-            document.getElementById('navContainer').classList.remove('mobile-active');
-            window.scrollTo(0,0);
-        }
-
-        function openLightbox(idx) {
-            currentImgIdx = idx;
-            document.getElementById('lightbox-img').src = galleryImages[idx];
+        function openLb(src) {
+            document.getElementById('lb-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeLightbox() { 
-            document.getElementById('lightbox').style.display = 'none'; 
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeImage(dir) {
-            currentImgIdx = (currentImgIdx + dir + galleryImages.length) % galleryImages.length;
-            document.getElementById('lightbox-img').src = galleryImages[currentImgIdx];
-        }
-
-        window.onpopstate = (e) => showSection(e.state ? e.state.sid : 'home');
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initGallery();
-            setLang('cz');
-            const p = window.location.pathname.replace('/','');
-            showSection(p || 'home');
-        });
+        window.onload = init;
     </script>
 </body>
 </html>
