@@ -45,7 +45,7 @@
     <meta property="og:url" content="https://om-design.cz/">
     <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
     <meta property="og:description" content="Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety ale i ostatní stavební řemeslné práce. Pro inspiraci si prohlédněte naši galerii">
-    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.2">
+    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.5">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
@@ -301,7 +301,7 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.5"; // Aktualizováno pro vynucení stažení nových názvů
+        const webVersion = "2.5";
 
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
@@ -378,27 +378,27 @@
             showSection(sectionId);
         }
 
-        // --- MAPOVÁNÍ NÁZVŮ SOUBORŮ ---
+        // --- MAPOVÁNÍ NÁZVŮ SOUBORŮ (Všechno malým pro maximální kompatibilitu) ---
         const imageFileNames = {
-            2: "02-betonova-sterka-Praha",
+            2: "02-betonova-sterka-praha",
             3: "03-vertikalni-malirska-technika-praha",
             4: "04-branding-wall-praha",
             5: "05-betonova-sterka-hradec-kralove",
             6: "06-branding-wall-hradec-kralove",
-            7: "07-branding-wall-Hradec-Kralove",
+            7: "07-branding-wall-hradec-kralove",
             8: "08-betonova-sterka-hradec-kralove",
-            9: "09-imitace-betonu-v-provance-stylu-Hradec-Kralove",
-            10: "10-vertikalni-malirska-technika-Hradec-Kralove",
-            11: "11-branding-wall-Hradec-Kralove",
+            9: "09-imitace-betonu-v-provance-stylu-hradec-kralove",
+            10: "10-vertikalni-malirska-technika-hradec-kralove",
+            11: "11-branding-wall-hradec-kralove",
             12: "12-malirska-dekoracni-technika-pardubice",
             13: "13-imitace-betonu-pardubice",
-            14: "14-luxusni-sterka-obyvaci-pokoj-Chrudim",
+            14: "14-luxusni-sterka-obyvaci-pokoj-chrudim",
             15: "15-imitace-betonu-pokoj",
             16: "16-vertikalni-malirska-technika-pardubice",
             17: "17-imitace-betonu-loznice",
-            18: "18-ostarena-stena-obyvak-Hradec-Kralove",
-            19: "19-imitace-cihel-dekorace-Hradec-Kralove",
-            20: "20-benatsky-stuk-Hradec-Kralove",
+            18: "18-ostarena-stena-obyvak-hradec-kralove",
+            19: "19-imitace-cihel-dekorace-hradec-kralove",
+            20: "20-benatsky-stuk-hradec-kralove",
             21: "21-luxusni-sterka-praha",
             22: "22-nater-fasady-praha",
             23: "23-nater-konstrukce-podchod",
@@ -434,10 +434,12 @@
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        // --- GENEROVÁNÍ GALERIE (Nyní do 24) ---
+        // --- GENEROVÁNÍ GALERIE ---
         for (let i = 2; i <= 24; i++) {
-            const fileName = imageFileNames[i] || `image${i}`;
-            const imgSrc = `${fileName}.jpg?v=${webVersion}`; 
+            const fileName = imageFileNames[i];
+            if (!fileName) continue;
+
+            const imgSrc = fileName + ".jpg?v=" + webVersion; 
             images.push(imgSrc);
             
             const item = document.createElement('div');
@@ -447,11 +449,13 @@
             img.src = imgSrc;
             img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
             img.loading = "lazy";
-            img.onclick = function() { openLightbox(i-2); };
+            
+            // Fix indexu pro Lightbox (nyní správně předává pořadí v poli 'images')
+            const photoIndex = images.length - 1;
+            img.onclick = function() { openLightbox(photoIndex); };
             
             img.onerror = function() {
-                this.style.display = 'none';
-                this.parentElement.style.background = '#f0f0f0';
+                this.parentElement.style.display = 'none';
             };
 
             item.appendChild(img);
