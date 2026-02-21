@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OM Design - Dekorativní omítky</title>
+    <title>OM Design | Dekorativní omítky</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #f8f6f2; --dark: #121212; --accent: #9a7d61; --line: rgba(18,18,18,0.08); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif; line-height: 1.6; }
+        body { background: var(--bg); color: var(--dark); font-family: 'Hanken Grotesk', sans-serif !important; line-height: 1.6; }
+        
         header { position: fixed; top: 0; width: 100%; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--bg); border-bottom: 1px solid var(--line); }
         .logo-box img { height: 70px; cursor: pointer; }
         nav ul { display: flex; list-style: none; gap: 30px; }
         nav a { text-decoration: none; color: var(--dark); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; }
+        
         main { padding-top: 140px; }
         .section { display: none; padding: 40px 60px; max-width: 1400px; margin: 0 auto; }
         .section.active { display: block; }
+        
         h1 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; margin-bottom: 40px; line-height: 0.9; }
-        /* OPRAVA PÍSMA O NÁS */
-        #about p { font-family: 'Hanken Grotesk', sans-serif !important; font-size: 1.4rem; font-weight: 200; margin-bottom: 25px; }
-        .vision { font-family: 'Fraunces', serif !important; font-style: italic; color: var(--accent); font-size: 1.8rem !important; }
-        /* GALERIE */
+        
+        /* OPRAVA PÍSMA SEKCE O NÁS */
+        .about-content p { font-family: 'Hanken Grotesk', sans-serif !important; font-size: 1.4rem; font-weight: 200; margin-bottom: 25px; color: var(--dark); }
+        .vision { font-family: 'Fraunces', serif !important; font-style: italic; color: var(--accent); font-size: 1.8rem !important; margin-bottom: 30px; }
+
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         .g-item { height: 550px; background: #eee; overflow: hidden; border: 1px solid var(--line); }
         .g-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: 0.5s; }
-        .g-item img:hover { transform: scale(1.05); }
+        
         .service-list { list-style: none; margin-bottom: 40px; }
         .service-list li { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 1.2rem; font-weight: 200; }
+        
         #lightbox { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248,246,242,0.98); z-index:9999; justify-content:center; align-items:center; }
         #lightbox img { max-width: 90%; max-height: 85vh; border: 10px solid white; }
     </style>
@@ -67,8 +72,11 @@
 
         <section id="about" class="section">
             <h1>Odkaz.</h1>
-            <p class="vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
-            <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
+            <div class="about-content">
+                <p class="vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
+                <p>Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
+                <p>Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
+            </div>
         </section>
 
         <section id="contact" class="section">
@@ -86,7 +94,8 @@
     <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
     <script>
-        // SEZNAM FOTEK - VŠE MALÝM + .JPG
+        const v = "13.0"; // Nová verze pro cache
+
         const images = {
             2: "02-betonova-sterka-praha.jpg", 3: "03-vertikalni-malirska-technika-praha.jpg",
             4: "04-branding-wall-praha.jpg", 5: "05-betonova-sterka-hradec-kralove.jpg",
@@ -110,12 +119,13 @@
 
         function init() {
             const grid = document.getElementById('grid');
-            // CYKLUS DO 24 VČETNĚ
+            grid.innerHTML = '';
+            // NATVRDO LIMIT 24
             for (let i = 2; i <= 24; i++) {
                 if (!images[i]) continue;
                 const item = document.createElement('div');
                 item.className = 'g-item';
-                item.innerHTML = `<img src="${images[i]}?v=12" onclick="openLb('${images[i]}')" onerror="this.parentElement.style.display='none'">`;
+                item.innerHTML = `<img src="${images[i]}?v=${v}" onclick="openLb('${images[i]}')" onerror="this.parentElement.style.display='none'">`;
                 grid.appendChild(item);
             }
         }
