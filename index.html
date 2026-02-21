@@ -189,8 +189,8 @@
                 <div class="year-tag">2008</div>
                 <div>
                     <h2 data-tr="about-h2">Odkaz.</h2>
-                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
-                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">Na trhu působíme již od roku 2008...</p>
+                    <p class="vision-text" data-tr="about-vision"></p>
+                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1"></p>
                     <div class="ref-list">
                         <div class="ref-tag">EGE trading s.r.o.</div>
                         <div class="ref-tag">Polymed medical a.s.</div>
@@ -198,6 +198,8 @@
                         <div class="ref-tag">Dazzle Pictures</div>
                         <div class="ref-tag">MRAMORIT a.s.</div>
                         <div class="ref-tag">Skanska a.s.</div>
+                        <div class="ref-tag">ELTODO, a.s.</div>
+                        <div class="ref-tag">Helma 365, s.r.o.</div>
                     </div>
                 </div>
             </div>
@@ -206,14 +208,14 @@
         <section id="contact" class="section">
             <h2 data-tr="contact-h2">Dialog.</h2>
             <div class="contact-view">
-                <div class="contact-msg" data-tr="contact-msg">"V případě zájmu o návrh nás neváhejte kontaktovat."</div>
+                <div class="contact-msg" data-tr="contact-msg"></div>
                 <div class="c-box">
                     <span class="c-label">Project Manager</span>
                     <span class="c-val">Mgr. Ondřej Menyhárt</span>
                     <span class="c-label" data-tr="contact-phone">Telefon</span>
                     <a href="tel:+420776648619" class="c-val">+ 420 776 648 619</a>
                     <span class="c-label" data-tr="contact-email">Emailová adresa</span>
-                    <a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.2rem;">ondra.menyhart@gmail.com</a>
+                    <a href="mailto:ondra.menyhart@gmail.com" class="c-val" style="font-size: 1.5rem;">ondra.menyhart@gmail.com</a>
                 </div>
             </div>
         </section>
@@ -229,16 +231,21 @@
     <footer>&copy; 2008 — 2026 OM DESIGN &bull; CZECH REPUBLIC</footer>
 
     <script>
-        const webVer = "7.0";
+        const webVer = "8.0";
 
         const translations = {
             cz: {
                 "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
-                "home-h2": "Materiál a Prostor.", "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", "home-portfolio": "Portfolio služeb:",
-                "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
+                "home-h2": "Materiál a Prostor.", 
+                "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", 
+                "home-portfolio": "Portfolio služeb:",
+                "gallery-h2": "Ukázky naší práce.", 
+                "about-h2": "Odkaz.", 
                 "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“",
-                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
-                "contact-h2": "Dialog.", "contact-phone": "Telefon", "contact-email": "Emailová adresa",
+                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti i soukromé klienty.",
+                "contact-h2": "Dialog.", 
+                "contact-phone": "Telefon", 
+                "contact-email": "Emailová adresa",
                 "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení.\"",
                 "services": [
                     "Vizuální návrh, konzultace a realizace projektu s individuálním přístupem",
@@ -252,11 +259,13 @@
             },
             en: {
                 "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
-                "home-h2": "Material and Space.", "home-desc": "Modern look combined with elegance.", "home-portfolio": "Services:",
-                "gallery-h2": "Our Work.", "about-h2": "Legacy.", "about-vision": "\"We started with a vision...\"",
-                "about-p1": "Active since 2008...", "contact-h2": "Dialogue.",
-                "contact-phone": "Phone", "contact-email": "Email", "contact-msg": "\"Contact us for your projects.\"",
-                "services": ["Visual Design", "Decorative Techniques", "Branding Walls", "Painting", "Drywall", "Flooring", "Other Construction Works"]
+                "home-h2": "Material and Space.", "home-desc": "Modern look combined with elegance and luxury.", "home-portfolio": "Our Portfolio:",
+                "gallery-h2": "Our Work.", "about-h2": "Legacy.", 
+                "about-vision": "„We started with a vision that every home deserves exceptional care...“",
+                "about-p1": "Active on the market since 2008. For over 18 years we have completed many successful projects.",
+                "contact-h2": "Dialogue.", "contact-phone": "Phone", "contact-email": "Email", 
+                "contact-msg": "\"If you are interested in a design or consultation, please do not hesitate to contact us.\"",
+                "services": ["Visual Design", "Decorative Painting", "Branding Walls", "Interior Painting", "Drywall", "Flooring", "Construction Works"]
             }
         };
 
@@ -295,7 +304,6 @@
             grid.innerHTML = '';
             galleryImages.length = 0;
 
-            // OPRAVA: Smyčka do 24 včetně
             for (let i = 2; i <= 24; i++) {
                 const name = imageFileNames[i];
                 if (!name) continue;
@@ -339,9 +347,11 @@
         }
 
         function showSection(id) {
+            const section = document.getElementById(id);
+            if (!section) return;
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            section.classList.add('active');
             const nav = document.getElementById('t-' + id);
             if (nav) nav.classList.add('active');
             document.getElementById('navContainer').classList.remove('mobile-active');
@@ -352,9 +362,13 @@
             currentImgIdx = idx;
             document.getElementById('lightbox-img').src = galleryImages[idx];
             document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+        function closeLightbox() { 
+            document.getElementById('lightbox').style.display = 'none'; 
+            document.body.style.overflow = 'auto';
+        }
 
         function changeImage(dir) {
             currentImgIdx = (currentImgIdx + dir + galleryImages.length) % galleryImages.length;
