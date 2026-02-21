@@ -132,8 +132,6 @@
         .lb-prev { left: 30px; }
         .lb-next { right: 30px; }
 
-        footer { padding: 60px; border-top: 1px solid var(--line); text-align: center; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.4; }
-
         @media (max-width: 1024px) {
             header { padding: 20px 30px; }
             .menu-toggle { display: block; }
@@ -205,8 +203,8 @@
                 <div class="year-tag">2008</div>
                 <div>
                     <h2 data-tr="about-h2">Odkaz.</h2>
-                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči...“</p>
-                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">Na trhu působíme již od roku 2008...</p>
+                    <p class="vision-text" data-tr="about-vision">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“</p>
+                    <p style="font-size: 1.5rem; font-weight: 200; margin-bottom: 30px;" data-tr="about-p1">Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:</p>
                     <div class="ref-list">
                         <div class="ref-tag">EGE trading s.r.o.</div>
                         <div class="ref-tag">Polymed medical a.s.</div>
@@ -216,7 +214,7 @@
                         <div class="ref-tag">Skanska a.s.</div>            
                         <div class="ref-tag">ELTODO, a.s.</div>
                         <div class="ref-tag">Helma 365, s.r.o.</div>
-                        <p class="full-width-text" data-tr="about-p2">...po celé ČR.</p>
+                        <p class="full-width-text" data-tr="about-p2">...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.</p>
                     </div>
                 </div>
             </div>
@@ -225,7 +223,7 @@
         <section id="contact" class="section">
             <h2 data-tr="contact-h2">Dialog.</h2>
             <div class="contact-view">
-                <div class="contact-msg" data-tr="contact-msg">"V případě zájmu o návrh..."</div>
+                <div class="contact-msg" data-tr="contact-msg">"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat. Společně proměníme Vaše představy v kvalitní a designové řešení."</div>
                 <div class="c-box">
                     <span class="c-label">Project Manager</span>
                     <span class="c-val">Mgr. Ondřej Menyhárt</span>
@@ -251,12 +249,17 @@
                 "nav-home": "Domů", "nav-gallery": "Galerie", "nav-about": "O nás", "nav-contact": "Kontakt",
                 "home-h2": "Materiál a Prostor.", "home-desc": "Moderní vzhled propojený s nádechem elegance a luxusu.", "home-portfolio": "Portfolio služeb:",
                 "gallery-h2": "Ukázky naší práce.", "about-h2": "Odkaz.",
+                "about-vision": "„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“",
+                "about-p1": "Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů pro společnosti jako:",
+                "about-p2": "...až po realizaci nejrůznějších individuálních zakázek rodinných domů, bytů a komerčních prostor po celé ČR.",
+                "contact-h2": "Dialog.", "contact-msg": "\"V případě zájmu o návrh, konzultaci nebo realizaci projektu nás neváhejte kontaktovat.\"",
                 "services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]
             },
             en: {
                 "nav-home": "Home", "nav-gallery": "Gallery", "nav-about": "About", "nav-contact": "Contact",
                 "home-h2": "Material and Space.", "home-desc": "Modern look combined with elegance.", "home-portfolio": "Portfolio:",
-                "gallery-h2": "Our work.", "about-h2": "Legacy.",
+                "gallery-h2": "Our work.", "about-h2": "Legacy.", "about-vision": "\"We started with a vision...\"", "about-p1": "On the market since 2008...", "about-p2": "...across the Czech Republic.",
+                "contact-h2": "Dialogue.", "contact-msg": "\"In case of interest...\"",
                 "services": ["Visual design...", "Decorative painting...", "Branding walls", "Painting...", "Drywall...", "Flooring...", "Other works..."]
             }
         };
@@ -299,7 +302,7 @@
         galleryFiles.forEach((file, idx) => {
             const div = document.createElement('div');
             div.className = 'g-item';
-            div.innerHTML = `<img src="${file}" onclick="openLightbox(${idx})" onerror="this.parentElement.style.display='none'">`;
+            div.innerHTML = `<img src="${file}" onclick="openLightbox(${idx})" loading="lazy" onerror="this.parentElement.style.display='none'">`;
             grid.appendChild(div);
         });
 
