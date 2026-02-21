@@ -45,7 +45,7 @@
     <meta property="og:url" content="https://om-design.cz/">
     <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
     <meta property="og:description" content="Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety ale i ostatní stavební řemeslné práce. Pro inspiraci si prohlédněte naši galerii">
-    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.5">
+    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.6">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
@@ -300,11 +300,7 @@
     </footer>
 
     <script>
-        // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.5";
-
-        document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
-        document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
+        const webVersion = "2.7";
 
         const translations = {
             cz: {
@@ -331,54 +327,6 @@
             }
         };
 
-        const routeMap = { '': 'home', 'galerie': 'gallery', 'o-nas': 'about', 'kontakt': 'contact' };
-        let currentLang = 'cz';
-
-        function setLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-tr]').forEach(el => {
-                const key = el.getAttribute('data-tr');
-                if (translations[lang][key]) el.innerText = translations[lang][key];
-            });
-            const list = document.getElementById('services');
-            list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
-            document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        }
-
-        function toggleMenu() { document.getElementById('navContainer').classList.toggle('mobile-active'); }
-
-        function tab(id, event) {
-            if (event) event.preventDefault();
-            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id);
-            const newPath = urlPath === '' ? '/' : '/' + urlPath;
-            window.history.pushState({sectionId: id}, '', newPath);
-            showSection(id);
-        }
-
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            const targetSection = document.getElementById(id);
-            const targetNav = document.getElementById('t-' + id);
-            if (targetSection) targetSection.classList.add('active');
-            if (targetNav) targetNav.classList.add('active');
-            document.getElementById('navContainer').classList.remove('mobile-active');
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.sectionId) showSection(event.state.sectionId);
-            else handleInitialRouting();
-        });
-
-        function handleInitialRouting() {
-            const path = window.location.pathname.replace(/^\/|\/$/g, '');
-            const sectionId = routeMap[path] || 'home';
-            showSection(sectionId);
-        }
-
-        // --- MAPOVÁNÍ NÁZVŮ SOUBORŮ (Všechno malým pro maximální kompatibilitu) ---
         const imageFileNames = {
             2: "02-betonova-sterka-praha",
             3: "03-vertikalni-malirska-technika-praha",
@@ -432,34 +380,84 @@
         };
 
         const images = [];
-        const grid = document.getElementById('gallery-grid');
-        
-        // --- GENEROVÁNÍ GALERIE ---
-        for (let i = 2; i <= 24; i++) {
-            const fileName = imageFileNames[i];
-            if (!fileName) continue;
+        const routeMap = { '': 'home', 'galerie': 'gallery', 'o-nas': 'about', 'kontakt': 'contact' };
+        let currentLang = 'cz';
 
-            const imgSrc = fileName + ".jpg?v=" + webVersion; 
-            images.push(imgSrc);
+        function initGallery() {
+            const grid = document.getElementById('gallery-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            images.length = 0;
             
-            const item = document.createElement('div');
-            item.className = 'g-item';
-            
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
-            img.loading = "lazy";
-            
-            // Fix indexu pro Lightbox (nyní správně předává pořadí v poli 'images')
-            const photoIndex = images.length - 1;
-            img.onclick = function() { openLightbox(photoIndex); };
-            
-            img.onerror = function() {
-                this.parentElement.style.display = 'none';
-            };
+            for (let i = 2; i <= 24; i++) {
+                const fileName = imageFileNames[i];
+                if (!fileName) continue;
 
-            item.appendChild(img);
-            grid.appendChild(item);
+                const imgSrc = fileName + ".jpg?v=" + webVersion;
+                images.push(imgSrc);
+                
+                const item = document.createElement('div');
+                item.className = 'g-item';
+                
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = seoDescriptions[i] || "Realizace OM Design";
+                img.loading = "lazy";
+                
+                const photoIdx = images.length - 1;
+                img.onclick = () => openLightbox(photoIdx);
+                
+                img.onerror = function() {
+                    this.parentElement.style.display = 'none';
+                };
+
+                item.appendChild(img);
+                grid.appendChild(item);
+            }
+        }
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-tr]').forEach(el => {
+                const key = el.getAttribute('data-tr');
+                if (translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            const list = document.getElementById('services');
+            list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
+            document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        }
+
+        function toggleMenu() { document.getElementById('navContainer').classList.toggle('mobile-active'); }
+
+        function tab(id, event) {
+            if (event) event.preventDefault();
+            const urlPath = Object.keys(routeMap).find(key => routeMap[key] === id);
+            const newPath = urlPath === '' ? '/' : '/' + urlPath;
+            window.history.pushState({sectionId: id}, '', newPath);
+            showSection(id);
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            const targetSection = document.getElementById(id);
+            const targetNav = document.getElementById('t-' + id);
+            if (targetSection) targetSection.classList.add('active');
+            if (targetNav) targetNav.classList.add('active');
+            document.getElementById('navContainer').classList.remove('mobile-active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.sectionId) showSection(event.state.sectionId);
+            else handleInitialRouting();
+        });
+
+        function handleInitialRouting() {
+            const path = window.location.pathname.replace(/^\/|\/$/g, '');
+            const sectionId = routeMap[path] || 'home';
+            showSection(sectionId);
         }
 
         let currentIdx = 0;
@@ -478,8 +476,14 @@
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
-        handleInitialRouting();
-        setLang('cz');
+        // --- SPOUŠTĚNÍ PO NAČTENÍ ---
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('main-logo').src = "logo.png?v=" + webVersion;
+            document.getElementById('hero-img').src = "image1.jpg?v=" + webVersion;
+            initGallery();
+            handleInitialRouting();
+            setLang('cz');
+        });
     </script>
 </body>
 </html>
