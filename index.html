@@ -302,9 +302,9 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.4"; // Zvýšena verze pro jistotu načtení nového loga
+        const webVersion = "2.5"; // Zvýšena verze pro vynucení načtení změn v JS
 
-        // Nastavení verze pro statické soubory - změněno na .png
+        // Nastavení verze pro statické soubory
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -320,7 +320,7 @@
                 "contact-phone": "Telefon", "contact-email": "Emailová adresa",
                 "services": ["Vizuální návrh, konzultace a realizace projektu s individuálním přístupem", "Malířské dekorační techniky", "Branding walls", "Malování bytových i nebytových prostor", "Sádrokartonářské práce", "Podlahářské práce", "Ostatní stavební řemeslné práce"]
             },
-          en: {
+            en: {
                 "nav-home": "Home", 
                 "nav-gallery": "Gallery", 
                 "nav-about": "About", 
@@ -330,7 +330,7 @@
                 "home-portfolio": "Our Portfolio:",
                 "gallery-h2": "References.", 
                 "about-h2": "Legacy.",
-                "about-vision": "“We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft and our passion for design has taken us from small living rooms to realizations in the offices of international corporations. Whether it is a small family house or a prestigious headquarters of a international company, we care of every square meter with the same responsibility as at the very beginning.”",
+                "about-vision": "“We started with a vision that every home deserves exceptional care. Over the years, we have perfected our craft and our passion for design has taken us from small living rooms to realizations in the offices of international corporations. Whether it is a small family house or a prestigious headquarters of an international company, we care for every square meter with the same responsibility as at the very beginning.”",
                 "about-p1": "Established in 2008. Over more than 18 years, we have completed many projects for companies such as:",
                 "about-p2": "...to the realization of various individual projects for family houses, apartments, and commercial spaces throughout the Czech Republic.", 
                 "contact-h2": "Dialogue.",
@@ -347,7 +347,7 @@
                     "Other construction craft works"
                 ]
             }
-              };
+        };
 
         const routeMap = { '': 'home', 'galerie': 'gallery', 'o-nas': 'about', 'kontakt': 'contact' };
         let currentLang = 'cz';
@@ -356,10 +356,12 @@
             currentLang = lang;
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
-                if (translations[lang][key]) el.innerText = translations[lang][key];
+                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
             });
             const list = document.getElementById('services');
-            list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
+            if (list && translations[lang].services) {
+                list.innerHTML = translations[lang].services.map(s => `<li>${s}</li>`).join('');
+            }
             document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         }
