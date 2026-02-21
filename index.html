@@ -85,7 +85,7 @@
         }
 
         .logo-box img {
-            height: 75px; /* Ponecháno pro zachování rozměru */
+            height: 75px;
             width: auto;
             display: block;
             cursor: pointer;
@@ -302,9 +302,8 @@
 
     <script>
         // --- KONFIGURACE VERZE (Cache Buster) ---
-        const webVersion = "2.4"; // Zvýšena verze pro jistotu načtení nového loga
+        const webVersion = "2.5";
 
-        // Nastavení verze pro statické soubory - změněno na .png
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
 
@@ -395,12 +394,22 @@
             13: "Imitace betonu v RD v Hradci Králové"
         };
 
+        // --- DEFINICE OBRÁZKŮ PODLE GITHUB ADRESÁŘE ---
+        const galleryFiles = [
+            "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg", 
+            "image7.jpg", "image8.jpg", "image9.jpg", "image10.jpg", "image11.jpg", 
+            "image12.jpg", "image13.jpg", "image14.jpg", "image15.jpg", "image16.jpg", 
+            "image17.jpg", "image18.jpg", "image19.jpg", "image20.jpg", "image21.jpg", 
+            "image22.jpg", "image23.jpg", "image24.jpg", "image25.jpg", "image26.jpg",
+            "image27.jpg"
+        ];
+
         const images = [];
         const grid = document.getElementById('gallery-grid');
         
         // --- GENEROVÁNÍ GALERIE ---
-        for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg?v=${webVersion}`; 
+        galleryFiles.forEach((fileName, index) => {
+            const imgSrc = `${fileName}?v=${webVersion}`; 
             images.push(imgSrc);
             
             const item = document.createElement('div');
@@ -408,9 +417,13 @@
             
             const img = document.createElement('img');
             img.src = imgSrc;
-            img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
+            
+            // Získání čísla z názvu souboru pro SEO popisek
+            const imgNum = parseInt(fileName.match(/\d+/));
+            img.alt = seoDescriptions[imgNum] || `Realizace dekorativní omítky OM Design ${imgNum}`;
+            
             img.loading = "lazy";
-            img.onclick = function() { openLightbox(i-2); };
+            img.onclick = function() { openLightbox(index); };
             
             img.onerror = function() {
                 this.style.display = 'none';
@@ -419,7 +432,7 @@
 
             item.appendChild(img);
             grid.appendChild(item);
-        }
+        });
 
         let currentIdx = 0;
         function openLightbox(idx) {
