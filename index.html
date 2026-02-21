@@ -45,7 +45,7 @@
     <meta property="og:url" content="https://om-design.cz/">
     <meta property="og:title" content="OM Design - Dekorativní omítky a designové stěrky">
     <meta property="og:description" content="Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety ale i ostatní stavební řemeslné práce. Pro inspiraci si prohlédněte naši galerii">
-    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=2.6">
+    <meta property="og:image" content="https://om-design.cz/image1.jpg?v=3.0">
 
     <meta name="keywords" content="malování Hradec Králové, malování Pardubice, malíř Hradec Králové, malíř Pardubice, malování Praha, malíř Praha, řemeslné práce Hradec Králové, řemeslné práce Pardubice, betonové stěrky Hradec Králové, betonové stěrky Pardubice, betonové stěrky Praha, interiérový design, povrchové úpravy, rekonstrukce interiéru, om design, branding walls, branding wall, branding wall Hradec Králové, branding wall Praha, branding wall Pardubice, malování bytů, imitace betonu, imitace mramoru, benátský štuk, stavební firmy Hradec Králové, stavební firmy Pardubice, stavební firmy Praha, podlahář Hradec Králové, podlahář Pardubice, podlahy Hradec Králové, podlahy Pardubice, sádrokarton Hradec Králové, sádrokarton Pardubice, fasady Hradec Kralove, fasady Pardubice, malování rodinných domů Hradec Králové, malování rodinných domů Pardubice, malování komerčních prostor, betonová stěrka Hradec Králové, betonová stěrka Pardubice, povrchové úpravy interieru, návrhy designu, tapetování, zedník, zedník Hradec Králové, zedník Pardubice, seřízení oken Hradec Králové, seřízení oken Pardubice, dekorační stěrky Hradec Králové, dekorační stěrky Pardubice, dekorační stěrky Praha, Hradec Králové, Pardubice">
     
@@ -300,7 +300,7 @@
     </footer>
 
     <script>
-        const webVersion = "2.7";
+        const webVersion = "3.1"; // Zvýšení verze pro obejití staré keše
 
         const translations = {
             cz: {
@@ -353,42 +353,16 @@
             24: "24-rekonstrukce-koupelny-pardubice"
         };
 
-        const seoDescriptions = {
-            2: "Betonová stěrka realizovaná v Praze",
-            3: "Vertikální malířská technika Praha",
-            4: "Designová branding wall v Praze",
-            5: "Betonová stěrka v Hradci Králové",
-            6: "Branding wall Hradec Králové",
-            7: "Branding wall pro komerční prostory Hradec Králové",
-            8: "Kvalitní betonová stěrka Hradec Králové",
-            9: "Imitace betonu v Provance stylu Hradec Králové",
-            10: "Vertikální malířská technika RD Hradec Králové",
-            11: "Moderní branding wall Hradec Králové",
-            12: "Malířská dekorační technika v Pardubicích",
-            13: "Imitace betonu v interiéru Pardubice",
-            14: "Luxusní stěrka v obývacím pokoji Chrudim",
-            15: "Imitace betonu v pokoji",
-            16: "Vertikální malířská technika Pardubice",
-            17: "Imitace betonu v ložnici",
-            18: "Ostařená stěna v obývacím pokoji Hradec Králové",
-            19: "Imitace cihel jako dekorace Hradec Králové",
-            20: "Benátský štuk realizace Hradec Králové",
-            21: "Luxusní dekorační stěrka Praha",
-            22: "Nátěr fasády Praha",
-            23: "Nátěr ocelové konstrukce podchod",
-            24: "Kompletní rekonstrukce koupelny Pardubice"
-        };
-
         const images = [];
         const routeMap = { '': 'home', 'galerie': 'gallery', 'o-nas': 'about', 'kontakt': 'contact' };
-        let currentLang = 'cz';
-
+        
         function initGallery() {
             const grid = document.getElementById('gallery-grid');
             if (!grid) return;
             grid.innerHTML = '';
             images.length = 0;
             
+            // OPRAVA: Smyčka jede do 24, aby obsáhla všech 23 souborů
             for (let i = 2; i <= 24; i++) {
                 const fileName = imageFileNames[i];
                 if (!fileName) continue;
@@ -401,13 +375,14 @@
                 
                 const img = document.createElement('img');
                 img.src = imgSrc;
-                img.alt = seoDescriptions[i] || "Realizace OM Design";
+                img.alt = "Realizace OM Design";
                 img.loading = "lazy";
                 
                 const photoIdx = images.length - 1;
                 img.onclick = () => openLightbox(photoIdx);
                 
                 img.onerror = function() {
+                    // Pokud soubor neexistuje, zkusí se verze bez číselného prefixu nebo skryje
                     this.parentElement.style.display = 'none';
                 };
 
@@ -417,7 +392,6 @@
         }
 
         function setLang(lang) {
-            currentLang = lang;
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
                 if (translations[lang][key]) el.innerText = translations[lang][key];
@@ -446,13 +420,7 @@
             if (targetSection) targetSection.classList.add('active');
             if (targetNav) targetNav.classList.add('active');
             document.getElementById('navContainer').classList.remove('mobile-active');
-            window.scrollTo({top: 0, behavior: 'smooth'});
         }
-
-        window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.sectionId) showSection(event.state.sectionId);
-            else handleInitialRouting();
-        });
 
         function handleInitialRouting() {
             const path = window.location.pathname.replace(/^\/|\/$/g, '');
@@ -465,21 +433,17 @@
             currentIdx = idx;
             document.getElementById('lightbox-img').src = images[currentIdx];
             document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
         }
         function changeImage(dir) {
             currentIdx = (currentIdx + dir + images.length) % images.length;
             document.getElementById('lightbox-img').src = images[currentIdx];
         }
 
-        // --- SPOUŠTĚNÍ PO NAČTENÍ ---
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('main-logo').src = "logo.png?v=" + webVersion;
-            document.getElementById('hero-img').src = "image1.jpg?v=" + webVersion;
+        // SPUŠTĚNÍ
+        document.addEventListener('DOMContentLoaded', () => {
             initGallery();
             handleInitialRouting();
             setLang('cz');
