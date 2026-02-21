@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OM Design - Dekorativní omítky</title>
+    <title> OM Design - Dekorativní omítky </title>
     
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Hanken+Grotesk:wght@200;400;600&display=swap" rel="stylesheet">
     
@@ -68,14 +68,14 @@
         .hero-flex { display: flex; gap: 80px; }
         .main-desc { font-size: 1.6rem; color: var(--accent); font-style: italic; margin-bottom: 40px; }
         
-        /* OPRAVA PÍSMA - ZESÍLENÍ */
+        /* OPRAVA PÍSMA - ZESÍLENÍ PRO LEPŠÍ ČITELNOST */
         .portfolio-title { letter-spacing: 2px; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
         .service-list { list-style: none; }
         .service-list li { 
             padding: 15px 0; 
             border-bottom: 1px solid var(--line); 
             font-size: 1.15rem; 
-            font-weight: 400; /* Zvýšeno z 200 pro lepší čitelnost */
+            font-weight: 400; /* Původně 200 - nyní čitelnější */
         }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
@@ -136,14 +136,13 @@
 
         <section id="gallery" class="section">
             <h2>Ukázky naší práce.</h2>
-            <div class="gallery-grid" id="grid">
-                </div>
+            <div class="gallery-grid" id="grid"></div>
         </section>
 
         <section id="about" class="section">
             <h2>Odkaz.</h2>
             <div class="about-text">
-                <p class="vision-quote">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči.“</p>
+                <p class="vision-quote">„Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím v kancelářích mezinárodních korporací.“</p>
                 <p style="margin-bottom: 25px;">Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali mnoho úspěšných projektů po celé ČR pro významné společnosti jako EGE trading s.r.o., Polymed medical a.s., Bohemia Interactive, Dazzle Pictures, MRAMORIT a.s., Skanska a.s., ELTODO, a.s., Helma 365, s.r.o. a mnoho dalších.</p>
                 <p>Realizujeme nejrůznější druhy dekorativních omítek, výmalby, tapety, ale i ostatní stavební řemeslné práce.</p>
             </div>
@@ -173,8 +172,8 @@
             window.scrollTo(0,0);
         }
 
-        // RUČNÍ SEZNAM OBRÁZKŮ (23 KUSŮ)
-        const photoFiles = [
+        // SEZNAM FOTEK - RUČNĚ VYPSANÝ PRO 100% FUNKČNOST
+        const galleryImages = [
             "02-betonova-sterka-praha.jpg", "03-vertikalni-malirska-technika-praha.jpg", "04-branding-wall-praha.jpg",
             "05-betonova-sterka-hradec-kralove.jpg", "06-branding-wall-hradec-kralove.jpg", "07-branding-wall-hradec-kralove.jpg",
             "08-betonova-sterka-hradec-kralove.jpg", "09-imitace-betonu-v-provance-stylu-hradec-kralove.jpg", "10-vertikalni-malirska-technika-hradec-kralove.jpg",
@@ -188,13 +187,13 @@
         function initGallery() {
             const grid = document.getElementById('grid');
             grid.innerHTML = '';
-            photoFiles.forEach(fileName => {
+            galleryImages.forEach(imgName => {
                 const div = document.createElement('div');
                 div.className = 'g-item';
                 const img = document.createElement('img');
-                img.src = fileName;
-                img.onclick = () => {
-                    document.getElementById('lb-img').src = fileName;
+                img.src = imgName;
+                img.onclick = function() {
+                    document.getElementById('lb-img').src = this.src;
                     document.getElementById('lightbox').style.display = 'flex';
                 };
                 div.appendChild(img);
