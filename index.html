@@ -302,7 +302,7 @@
 
     <script>
         // --- KONFIGURACE VERZE ---
-        const webVersion = "2.6"; 
+        const webVersion = "2.8"; 
 
         document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
         document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
@@ -340,20 +340,14 @@
         function setLang(lang) {
             currentLang = lang;
             const data = translations[lang];
-            
-            // Texty označené data-tr
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.getAttribute('data-tr');
                 if (data[key]) el.innerText = data[key];
             });
-
-            // Seznam služeb
             const list = document.getElementById('services');
             if (list && data.services) {
                 list.innerHTML = data.services.map(s => `<li>${s}</li>`).join('');
             }
-
-            // Tlačítka jazyků
             document.getElementById('lang-cz').classList.toggle('active', lang === 'cz');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         }
@@ -390,46 +384,53 @@
             showSection(sectionId);
         }
 
-        const seoDescriptions = {
-            2: "Betonová stěrka pro EGE Trading s.r.o. Praha",
-            3: "Vertikální malířská technika Praha",
-            4: "Branding wall EGE Trading s.r.o. Praha",
-            5: "Betonová stěrka Polymed Hradec Králové",
-            6: "Branding wall Polymed Hradec Králové",
-            7: "Branding wall Polymed Hradec Králové",
-            8: "Betonová stěrka Polymed Hradec Králové",
-            9: "Imitace betonu v Provance stylu v rodinném domě Hradec Králové",
-            10: "Vertikální malířská technika v RD v okolí Hradce Králové",
-            11: "Branding wall Polymed Hradec Králové",
-            12: "Vertikální malířská technika bytu v Hradci Králové",
-            13: "Imitace betonu v RD v Hradci Králové"
-        };
+        // --- RUČNÍ SEZNAM OBRÁZKŮ (PŘESNĚ PODLE TVÉHO GITHUBU) ---
+        const galleryImages = [
+            { src: "betonova-sterka-ege-trading-praha.jpg", alt: "Betonová stěrka pro EGE Trading s.r.o. Praha" },
+            { src: "vertikalni-malirska-technika-praha.jpg", alt: "Vertikální malířská technika Praha" },
+            { src: "branding-wall-ege-trading-praha.jpg", alt: "Branding wall EGE Trading s.r.o. Praha" },
+            { src: "betonova-sterka-polymed-hradec-kralove.jpg", alt: "Betonová stěrka Polymed Hradec Králové" },
+            { src: "branding-wall-polymed-hradec-kralove.jpg", alt: "Branding wall Polymed Hradec Králové" },
+            { src: "branding-wall-polymed-hradec-kralove-2.jpg", alt: "Branding wall Polymed Hradec Králové detail" },
+            { src: "betonova-sterka-polymed-hradec-kralove-2.jpg", alt: "Betonová stěrka Polymed Hradec Králové detail" },
+            { src: "imitace-betonu-provance-rd-hradec-kralove.jpg", alt: "Imitace betonu v Provance stylu v rodinném domě Hradec Králové" },
+            { src: "vertikalni-malirska-technika-rd-hradec-kralove.jpg", alt: "Vertikální malířská technika v RD v okolí Hradce Králové" },
+            { src: "branding-wall-polymed-hradec-kralove-3.jpg", alt: "Branding wall Polymed Hradec Králové realizace" },
+            { src: "vertikalni-malirska-technika-byt-hradec-kralove.jpg", alt: "Vertikální malířská technika bytu v Hradci Králové" },
+            { src: "imitace-betonu-rd-hradec-kralove.jpg", alt: "Imitace betonu v RD v Hradci Králové" },
+            { src: "piskovcova-sterka-v-koupelne.jpg", alt: "Pískovcová stěrka v koupelně" },
+            { src: "imitace-betonu-v-kuchyni.jpg", alt: "Imitace betonu v kuchyni" },
+            { src: "piskovcova-sterka-v-kuchyni.jpg", alt: "Pískovcová stěrka v kuchyni" },
+            { src: "dekorativni-omitka-v-obyvacim-pokoji.jpg", alt: "Dekorativní omítka v obývacím pokoji" },
+            { src: "imitace-betonu-v-obyvacim-pokoji.jpg", alt: "Imitace betonu v obývacím pokoji" },
+            { src: "vertikalni-malirska-technika-v-obyvacim-pokoji.jpg", alt: "Vertikální malířská technika v obývacím pokoji" }
+        ];
 
-        const images = [];
         const grid = document.getElementById('gallery-grid');
         
-        for (let i = 2; i <= 20; i++) {
-            const imgSrc = `image${i}.jpg?v=${webVersion}`; 
-            images.push(imgSrc);
+        galleryImages.forEach((imgData, index) => {
+            const imgSrc = `${imgData.src}?v=${webVersion}`; 
             const item = document.createElement('div');
             item.className = 'g-item';
+            
             const img = document.createElement('img');
             img.src = imgSrc;
-            img.alt = seoDescriptions[i] || `Realizace dekorativní omítky OM Design ${i}`;
+            img.alt = imgData.alt;
             img.loading = "lazy";
-            img.onclick = function() { openLightbox(i-2); };
+            img.onclick = function() { openLightbox(index); };
             img.onerror = function() {
                 this.style.display = 'none';
                 this.parentElement.style.background = '#f0f0f0';
             };
+            
             item.appendChild(img);
             grid.appendChild(item);
-        }
+        });
 
         let currentIdx = 0;
         function openLightbox(idx) {
             currentIdx = idx;
-            document.getElementById('lightbox-img').src = images[currentIdx];
+            document.getElementById('lightbox-img').src = `${galleryImages[currentIdx].src}?v=${webVersion}`;
             document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -438,8 +439,8 @@
             document.body.style.overflow = 'auto';
         }
         function changeImage(dir) {
-            currentIdx = (currentIdx + dir + images.length) % images.length;
-            document.getElementById('lightbox-img').src = images[currentIdx];
+            currentIdx = (currentIdx + dir + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightbox-img').src = `${galleryImages[currentIdx].src}?v=${webVersion}`;
         }
 
         // --- START ---
