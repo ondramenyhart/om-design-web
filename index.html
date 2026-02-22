@@ -300,10 +300,10 @@
 
     <script>
         // --- KONFIGURACE VERZE ---
-        const webVersion = "2.8"; 
+        const webVersion = "2.9"; 
 
-        document.getElementById('main-logo').src = `logo.png?v=${webVersion}`;
-        document.getElementById('hero-img').src = `image1.jpg?v=${webVersion}`;
+        document.getElementById('main-logo').src = `./logo.png`;
+        document.getElementById('hero-img').src = `./image1.jpg`;
 
         const translations = {
             cz: {
@@ -410,43 +410,45 @@
         ];
 
         const grid = document.getElementById('gallery-grid');
-        grid.innerHTML = ''; // Vyčistíme starý obsah
+        grid.innerHTML = ''; // Vyčištění pro jistotu
 
         galleryImages.forEach((imgData, index) => {
             const item = document.createElement('div');
             item.className = 'g-item';
             const img = document.createElement('img');
             
-            // DŮLEŽITÉ: Používáme přímo název ze seznamu
+            // OPRAVA: Použití ./ pro kořenový adresář
             img.src = './' + imgData.src; 
             img.alt = imgData.alt;
             
             img.onclick = () => openLightbox(index);
             
-            // Pokud se obrázek nenačte, v konzoli uvidíme přesný název, který chybí
             img.onerror = () => {
-                console.error("Stále nenalezeno: " + imgData.src);
+                console.log("Chyba načítání: " + imgData.src);
                 item.style.display = 'none';
             };
             
             item.appendChild(img);
             grid.appendChild(item);
         });
-        
-        }
-      function openLightbox(idx) {
-    currentIdx = idx;
-    // Odstranit to ?v=...
-    document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src;
-    document.getElementById('lightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
 
-function changeImage(dir) {
-    currentIdx = (currentIdx + dir + galleryImages.length) % galleryImages.length;
-    // Odstranit to ?v=...
-    document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src;
-}
+        let currentIdx = 0;
+        function openLightbox(idx) {
+            currentIdx = idx;
+            // OPRAVA: Odstranění ?v= parametru a přidání ./
+            document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        function changeImage(dir) {
+            currentIdx = (currentIdx + dir + galleryImages.length) % galleryImages.length;
+            // OPRAVA: Odstranění ?v= parametru a přidání ./
+            document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src;
+        }
 
         // --- START ---
         handleInitialRouting();
