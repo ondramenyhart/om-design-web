@@ -412,22 +412,15 @@
         ];
 
         const grid = document.getElementById('gallery-grid');
-        
         galleryImages.forEach((imgData, index) => {
-            const imgSrc = `${imgData.src}?v=${webVersion}`; 
             const item = document.createElement('div');
             item.className = 'g-item';
-            
             const img = document.createElement('img');
-            img.src = imgSrc;
+            img.src = `${imgData.src}?v=${webVersion}`;
             img.alt = imgData.alt;
-            img.loading = "lazy";
-            img.onclick = function() { openLightbox(index); };
-            img.onerror = function() {
-                this.style.display = 'none';
-                this.parentElement.style.background = '#f0f0f0';
-            };
-            
+            img.onclick = () => openLightbox(index);
+            // Pokud obrázek na serveru neexistuje, skryje se celý box
+            img.onerror = () => item.style.display = 'none';
             item.appendChild(img);
             grid.appendChild(item);
         });
