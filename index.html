@@ -436,7 +436,7 @@
         function openLightbox(idx) {
             currentIdx = idx;
             // OPRAVA: Odstranění ?v= parametru a přidání ./
-            document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src;
+            document.getElementById('lightbox-img').src = './' + galleryImages[currentIdx].src + '?v=3.0';
             document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
