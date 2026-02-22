@@ -411,7 +411,7 @@
             { src: "24-rekonstrukce-koupelny-pardubice.jpg", alt: "Rekonstrukce koupelny, bytu" },
         ];
 
-        const grid = document.getElementById('gallery-grid');
+     const grid = document.getElementById('gallery-grid');
         galleryImages.forEach((imgData, index) => {
             const item = document.createElement('div');
             item.className = 'g-item';
@@ -419,8 +419,13 @@
             img.src = `${imgData.src}?v=${webVersion}`;
             img.alt = imgData.alt;
             img.onclick = () => openLightbox(index);
-            // Pokud obrázek na serveru neexistuje, skryje se celý box
-            img.onerror = () => item.style.display = 'none';
+            
+            // Tady zjistíme pravdu:
+            img.onerror = () => {
+                console.error("CHYBA: Nepodařilo se načíst obrázek: " + imgData.src);
+                item.style.display = 'none'; 
+            };
+            
             item.appendChild(img);
             grid.appendChild(item);
         });
