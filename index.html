@@ -418,7 +418,7 @@
             const img = document.createElement('img');
             
             // OPRAVA: Použití ./ pro kořenový adresář
-            img.src = './' + imgData.src; 
+            img.src = './' + imgData.src + '?v=' + 3.0;
             img.alt = imgData.alt;
             
             img.onclick = () => openLightbox(index);
