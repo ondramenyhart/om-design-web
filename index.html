@@ -414,14 +414,15 @@
             const item = document.createElement('div');
             item.className = 'g-item';
             const img = document.createElement('img');
-            img.src = `${imgData.src}?v=${webVersion}`;
+            
+            img.src = imgData.src; 
             img.alt = imgData.alt;
+            
             img.onclick = () => openLightbox(index);
             
-            // Tady zjistíme pravdu:
             img.onerror = () => {
-                console.error("CHYBA: Nepodařilo se načíst obrázek: " + imgData.src);
-                item.style.display = 'none'; 
+                console.log("Chyba načítání: " + imgData.src);
+                item.style.display = 'none';
             };
             
             item.appendChild(img);
