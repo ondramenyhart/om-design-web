@@ -60,7 +60,7 @@
         /* --- NAVIGACE --- */
         header {
             position: fixed; top: 0; width: 100%; height: 80px;
-            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -149,7 +149,7 @@
 
         /* --- ABOUT --- */
         .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; }
-        .year-huge { font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--accent); opacity: 0.2; line-height: 1; position: sticky; top: 120px; height: fit-content; }
+        .year-huge { font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--accent); opacity: 0.2; line-height: 1; position: sticky; top: 120px; height: fit-content; font-variant-numeric: lining-nums; }
         .vision-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; margin-bottom: 30px; color: var(--accent); }
         .about-text p { margin-bottom: 20px; font-size: 1.05rem; color: #444; text-align: justify; }
         
@@ -175,7 +175,7 @@
         }
 
         @media (max-width: 900px) {
-            header { height: 70px; }
+            header { height: 70px; padding: 0 5%; }
             .menu-toggle { display: block; }
             .nav-container { 
                 position: fixed; top: 70px; left: 0; width: 100%; background: white; 
@@ -304,10 +304,10 @@
                     <span class="c-info-val">Mgr. Ondřej Menyhárt</span>
 
                     <span class="c-info-label tr" data-cs="Telefon" data-en="Phone">Telefon</span>
-                    <a href="tel:+420776648619" class="c-info-val">+420 776 648 619</a>
+                    <span class="c-info-val">+420 776 648 619</span>
 
                     <span class="c-info-label">E-mail</span>
-                    <a href="mailto:ondra.menyhart@gmail.com" class="c-info-val">ondra.menyhart@gmail.com</a>
+                    <span class="c-info-val">ondra.menyhart@gmail.com</span>
 
                 </div>
             </div>
