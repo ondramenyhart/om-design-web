@@ -147,7 +147,10 @@
         /* --- ABOUT --- */
         .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; }
         .year-huge { font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--accent); opacity: 0.2; line-height: 1; position: sticky; top: 120px; height: fit-content; font-variant-numeric: lining-nums; }
-        .vision-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; margin-bottom: 30px; color: var(--accent); }
+        
+        /* ZDE ZMĚNA 1: Odstraněna kurzíva (font-style: italic) */
+        .vision-text { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 30px; color: var(--accent); }
+        
         .about-text p { margin-bottom: 20px; font-size: 1.05rem; color: #444; text-align: justify; }
         
         .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
@@ -166,12 +169,11 @@
 
         footer { padding: 60px 5%; border-top: 1px solid #eee; text-align: center; font-size: 0.7rem; letter-spacing: 3px; color: #aaa; background: #fff; }
 
-        /* --- RESPONSIVITA (ÚPRAVY PRO MOBIL) --- */
+        /* --- RESPONSIVITA --- */
         @media (max-width: 900px) {
             header { height: 70px; padding: 0 5%; }
             .menu-toggle { display: block; }
             
-            /* Prohození ikon v navigaci */
             .logo svg { display: none; }
             .mobile-logo { display: block; height: 40px; width: auto; }
 
@@ -187,7 +189,6 @@
             .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .hero-content p { margin: 0 auto 35px; }
             
-            /* SKRYTÍ ČTVERCE S LOGEM NA MOBILU */
             .hero-visual { display: none; }
 
             .services-strip { grid-template-columns: 1fr; margin-top: 40px; }
@@ -273,7 +274,8 @@
                        „Začínali jsme s vizí, že každý domov si zaslouží výjimečnou péči. Postupem let jsme své řemeslo zdokonalovali a naše vášeň pro design nás dovedla od rodinných obývacích pokojů až k realizacím nejrůznějších projektů v kancelářích mezinárodních korporací. Ať už se jedná o malý rodinný dům nebo prestižní sídlo nadnárodní firmy, ke každému metru čtverečnému přistupujeme se stejnou zodpovědností jako na úplném začátku.“
                     </p>
 
-                    <h3 class="tr" data-cs="Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali nejrůznější projekty pro rodinné domy, byty až po projekty pro velké mezinárodní společnosti jako:" data-en="Established in 2008. After more than 18 years we have accomplished various projects for family houses, apartments and companies such as:" style="margin: 40px 0 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali nejrůznější projekty pro rodinné domy, byty až po projekty pro velké mezinárodní společnosti jako:</h3>
+                    <h3 class="tr" data-cs="Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali nejrůznější projekty pro rodinné domy, byty až po projekty pro velké mezinárodní společnosti jako:" data-en="Established in 2008. After more than 18 years we have accomplished various projects for family houses, apartments and companies such as:" style="margin: 40px 0 20px; font-size: 0.9rem; letter-spacing: 2px;">Na trhu působíme již od roku 2008. Za více než 18 let jsme realizovali nejrůznější projekty pro rodinné domy, byty až po projekty pro velké mezinárodní společnosti jako:</h3>
+                    
                     <div class="ref-grid">
                         <div class="ref-item">EGE trading s.r.o.</div>
                         <div class="ref-item">Polymed medical a.s.</div>
